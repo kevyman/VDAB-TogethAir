@@ -1,6 +1,6 @@
 package be.vdab.domain.user;
 
-import be.vdab.domain.AbstractEntity;
+import VDAB.TogethAir.domain.AbstractEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
