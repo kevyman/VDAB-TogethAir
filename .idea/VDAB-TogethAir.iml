@@ -14,7 +14,9 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="VDAB-TogethAir" />
+        </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -152,5 +154,6 @@
     <orderEntry type="library" scope="TEST" name="Maven: io.projectreactor:reactor-test:3.4.9" level="project" />
     <orderEntry type="library" name="Maven: io.projectreactor:reactor-core:3.4.9" level="project" />
     <orderEntry type="library" name="Maven: org.reactivestreams:reactive-streams:1.0.3" level="project" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.1.Final" level="project" />
   </component>
 </module>
