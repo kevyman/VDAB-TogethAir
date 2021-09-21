@@ -1,4 +1,4 @@
-package VDAB.TogethAir.model.user;
+package VDAB.TogethAir.model;
 
 import javax.persistence.*;
 import java.io.Serializable;

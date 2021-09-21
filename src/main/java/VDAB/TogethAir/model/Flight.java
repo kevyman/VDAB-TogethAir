@@ -1,38 +1,31 @@
-package VDAB.TogethAir.model.user;
+package VDAB.TogethAir.model;
 
-import VDAB.TogethAir.model.AbstractSuper;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user" , schema = "togethair")
-public class Person extends AbstractSuper {
+public class Flight extends AbstractSuper {
 
     @Column(nullable = false , length = 100)
-    private String name;
-
+    private String departureAirport;
     @Column(nullable = false , length = 100)
-    private String surname;
-
+    private String destinationAirport;
     @Column(nullable = false , length = 100)
-    private Integer age;
-
+    private LocalDateTime departureTime;
     @Column(nullable = false , length = 100)
-    private String emailAddress;
-
+    private LocalDateTime destinationTime;
     @Column(nullable = false , length = 100)
-    private String password;
-
-    @Enumerated
-    private UserRole role;
+    private Long flightDuration;
+    @Column(nullable = false , length = 100)
+    private Double price;
 
 }
-
