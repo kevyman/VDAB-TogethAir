@@ -14,7 +14,7 @@ public class PersonController {
     private PersonService personsService;
 
 
-    @GetMapping("findPerson/{id}")
+    @GetMapping("/findPerson/{id}")
     public ResponseEntity<Person> findPersonById(Long id) throws Exception {
         Person person = personsService.findPersonById(id);
         return new ResponseEntity<>(person , HttpStatus.OK);
