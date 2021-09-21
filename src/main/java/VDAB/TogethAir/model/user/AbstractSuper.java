@@ -1,9 +1,10 @@
 package VDAB.TogethAir.model.user;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public abstract class AbstractSuper {
+public abstract class AbstractSuper implements Serializable {
     @Id
     @Column(name = "id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

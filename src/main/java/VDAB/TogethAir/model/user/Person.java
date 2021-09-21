@@ -1,28 +1,40 @@
 package VDAB.TogethAir.model.user;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.catalina.User;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.Table;
+
 
 @Entity
 @Data
 @NoArgsConstructor
-
+@AllArgsConstructor
+@Table(name = "user" , schema = "togethair")
 public class Person extends AbstractSuper {
 
+    @Column(nullable = false , length = 100)
     private String name;
+
+    @Column(nullable = false , length = 100)
     private String surname;
+
+    @Column(nullable = false , length = 100)
     private Integer age;
+
+    @Column(nullable = false , length = 100)
     private String emailAddress;
+
+    @Column(nullable = false , length = 100)
     private String password;
 
-    public Person(String name, String surname, Integer age, String emailAddress, String password) {
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-        this.emailAddress = emailAddress;
-        this.password = password;
-    }
+    @Enumerated
+    private UserRole role;
+
 }
 
