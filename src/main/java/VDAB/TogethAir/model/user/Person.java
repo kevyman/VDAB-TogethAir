@@ -3,13 +3,10 @@ package VDAB.TogethAir.model.user;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.catalina.User;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.Table;
-
 
 @Entity
 @Data
@@ -35,6 +32,8 @@ public class Person extends AbstractSuper {
 
     @Enumerated
     private UserRole role;
+
+
 
 }
 
