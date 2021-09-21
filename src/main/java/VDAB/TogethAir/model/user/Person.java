@@ -33,7 +33,5 @@ public class Person extends AbstractSuper {
     @Enumerated
     private UserRole role;
 
-
-
 }
 
