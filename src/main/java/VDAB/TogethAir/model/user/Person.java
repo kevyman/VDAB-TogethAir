@@ -30,7 +30,7 @@ public class Person extends AbstractSuper implements Serializable {
     @Column(nullable = false , length = 100)
     private String password;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private UserRole role;
 
 }
