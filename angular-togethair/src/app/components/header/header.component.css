@@ -1,4 +1,18 @@
 .logoHeader{
     width: 110px;
     height: 87.969px;
+    margin-left: 50px;
+}
+.title{
+    margin-right: 1570px;
+    color: #C32BAD;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 22px;
+    padding-top: 8px;
+
+}
+.title:hover{
+    text-decoration: none;
+    color: #C32BAD;
+    
 }
