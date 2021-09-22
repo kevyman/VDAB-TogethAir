@@ -6,14 +6,15 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
+
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Flight extends AbstractSuper {
+public class Flight extends AbstractSuper implements Serializable {
 
     @Column(nullable = false , length = 100)
     private String departureAirport;
