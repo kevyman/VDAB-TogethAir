@@ -13,7 +13,9 @@ import {Person} from "../../models/person";
 })
 export class BodyComponent implements OnInit {
   public flights!: Flight[];
+
   public roles: string[] = ["ADMIN" , "TOGETHAIR_EMPLOYEE"  , "AIRLINE_EMPLOYEE" , "CLIENT"];
+
 
   // public values:string[] = Object.keys(Role).map(key => Role[key]).filter(k => !(parseInt(k) >= 0))
 
