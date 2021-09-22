@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -14,18 +13,23 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Flight extends AbstractSuper implements Serializable {
+public class Flight extends AbstractSuper {
 
     @Column(nullable = false , length = 100)
     private String departureAirport;
+
     @Column(nullable = false , length = 100)
     private String destinationAirport;
+
     @Column(nullable = false , length = 100)
     private LocalDateTime departureTime;
+
     @Column(nullable = false , length = 100)
     private LocalDateTime destinationTime;
+
     @Column(nullable = false , length = 100)
     private Long flightDuration;
+
     @Column(nullable = false , length = 100)
     private Double price;
 

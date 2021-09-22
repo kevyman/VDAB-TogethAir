@@ -5,7 +5,13 @@ export interface Person{
     age: number;
     emailAddress: string;
     password: string;
-    role: string;
-    
+    role: Role;
+}
+
+export enum Role {
+
+  ADMIN , TOGETHAIR_EMPLOYEE  , AIRLINE_EMPLOYEE , CLIENT
+
 
 }
+

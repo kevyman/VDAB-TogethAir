@@ -3,7 +3,7 @@
         <div class="col-xs-12">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Launch demo modal
+                Add New Flight
             </button>
 
             <!-- Modal -->
@@ -67,3 +67,74 @@
         </div>
     </div>
 </div>
+<div class="container main">
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#example2Modal">
+        Add New User
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="example2Modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+           aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel2">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form #addFormPerson="ngForm" (ngSubmit)="onAddPerson(addFormPerson)">
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" ngModel name="name" class="form-control"
+                         id="name" placeholder="e.g. Joe" required>
+                </div>
+                <div class="mb-3">
+                  <label for="surname" class="form-label">Surname</label>
+                  <input type="text" ngModel name="surname" class="form-control"
+                         id="surname" placeholder="e.g. Smith" required>
+                </div>
+                <div class="mb-3">
+
+                  <label for="age" class="form-label">Age</label>
+                  <input type="number" ngModel name="age" class="form-control" id="age"
+                         placeholder="27"
+                         required>
+                </div>
+                <div class="mb-3">
+
+                  <label for="emailAddress" class="form-label">Email Address</label>
+                  <input type="email" ngModel name="emailAddress" class="form-control" id="emailAddress"
+                         placeholder="example@example.com"
+                         required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="password" class="form-label">Choose password</label>
+                  <input type="password" ngModel name="password" class="form-control" id="password"
+                         placeholder="*********" required>
+                </div>
+
+
+                  <select class="form-control"  required>
+                    <option [ngValue]="role"  *ngFor="let role of roles">{{role}}</option>
+                  </select>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                          id="addUserCloseBtn">Close</button>
+                  <button [disabled]="addFormPerson.invalid" type="submit"
+                          class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
