@@ -1,10 +1,10 @@
-import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Flight } from 'src/app/models/flight';
-import { FlightService } from 'src/app/services/flight.service';
+import {HttpErrorResponse} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {Flight} from 'src/app/models/flight';
+import {FlightService} from 'src/app/services/flight.service';
 import {PersonService} from "../../services/person.service";
-import {Person} from "../../models/person";
+import {Person, Role} from "../../models/person";
 
 @Component({
   selector: 'app-body',
@@ -13,17 +13,25 @@ import {Person} from "../../models/person";
 })
 export class BodyComponent implements OnInit {
   public flights!: Flight[];
-  public roles : string[] = ["Admin" , "TogethAir Employee" , "Airline Employee" ]
+  public roles : Role[] = [
+      Role.CLIENT
+    , Role.ADMIN
+    , Role.AIRLINE_EMPLOYEE
+    , Role.TOGETHAIR_EMPLOYEE];
 
-  constructor(private flightService: FlightService ,
-              private personService : PersonService) { }
+  // public values:string[] = Object.keys(Role).map(key => Role[key]).filter(k => !(parseInt(k) >= 0))
+
+  constructor(private flightService: FlightService,
+              private personService: PersonService) {
+  }
+
 
   ngOnInit(): void {
   }
 
-  public getFlights(): void{
+  public getFlights(): void {
     this.flightService.getFlights().subscribe(
-      (response: Flight[]) =>{
+      (response: Flight[]) => {
         this.flights = response;
       },
       (error: HttpErrorResponse) => {
@@ -32,7 +40,7 @@ export class BodyComponent implements OnInit {
     );
   }
 
-  public onAddFlight(addForm: NgForm):void{
+  public onAddFlight(addForm: NgForm): void {
     document.getElementById('addFlightCloseBtn')?.click();
     this.flightService.addFlight(addForm.value).subscribe(
       (response: Flight) => {
@@ -46,12 +54,12 @@ export class BodyComponent implements OnInit {
     );
   }
 
-  public onAddPerson(addForm: NgForm):void{
+  public onAddPerson(addFormPerson: NgForm): void {
     document.getElementById('addPersonCloseBtn')?.click();
-    this.personService.addPerson(addForm.value).subscribe(
+    this.personService.addPerson(addFormPerson.value).subscribe(
       (response: Person) => {
         console.log(response);
-        addForm.reset();
+        addFormPerson.reset();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

@@ -85,7 +85,7 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form #addForm="ngForm" (ngSubmit)="onAddPerson(addForm)">
+              <form #addFormPerson="ngForm" (ngSubmit)="onAddPerson(addFormPerson)">
                 <div class="mb-3">
                   <label for="name" class="form-label">Name</label>
                   <input type="text" ngModel name="name" class="form-control"
@@ -119,13 +119,13 @@
 
 
                   <select class="form-control" required>
-                    <option *ngFor="let role of roles">{{role}}</option>
+                    <option [ngValue]="role"  *ngFor="let role of roles">{{role}}</option>
                   </select>
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                           id="addUserCloseBtn">Close</button>
-                  <button  type="submit"
+                  <button [disabled]="addFormPerson.invalid" type="submit"
                           class="btn btn-primary">Submit</button>
                 </div>
               </form>
