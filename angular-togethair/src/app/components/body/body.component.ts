@@ -13,11 +13,13 @@ import {Person, Role} from "../../models/person";
 })
 export class BodyComponent implements OnInit {
   public flights!: Flight[];
-  public roles : Role[] = [
-      Role.CLIENT
-    , Role.ADMIN
-    , Role.AIRLINE_EMPLOYEE
-    , Role.TOGETHAIR_EMPLOYEE];
+  // public roles : Role[] = [
+  //     Role.CLIENT
+  //   , Role.ADMIN
+  //   , Role.AIRLINE_EMPLOYEE
+  //   , Role.TOGETHAIR_EMPLOYEE];
+
+  roles : any[] = Object.values(Role);
 
   // public values:string[] = Object.keys(Role).map(key => Role[key]).filter(k => !(parseInt(k) >= 0))
 
