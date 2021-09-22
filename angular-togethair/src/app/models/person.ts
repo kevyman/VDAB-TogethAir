@@ -6,6 +6,5 @@ export interface Person{
     emailAddress: string;
     password: string;
     role: string;
-    
-
 }
+

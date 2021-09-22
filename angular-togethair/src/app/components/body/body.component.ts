@@ -13,6 +13,7 @@ import {Person} from "../../models/person";
 })
 export class BodyComponent implements OnInit {
   public flights!: Flight[];
+  public roles : string[] = ["Admin" , "TogethAir Employee" , "Airline Employee" ]
 
   constructor(private flightService: FlightService ,
               private personService : PersonService) { }

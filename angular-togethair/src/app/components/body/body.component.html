@@ -118,18 +118,14 @@
                 </div>
 
 
-                <div class="dropdown" >
-                  <button class="btn btn-secondary dropdown-toggle" type="button" name="role" id="role" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <button class="dropdown-item" type="button">Action</button>
-                  </div>
-                </div>
+                  <select class="form-control" required>
+                    <option *ngFor="let role of roles">{{role}}</option>
+                  </select>
+
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                           id="addUserCloseBtn">Close</button>
-                  <button [disabled]="addForm.invalid" type="submit"
+                  <button  type="submit"
                           class="btn btn-primary">Submit</button>
                 </div>
               </form>

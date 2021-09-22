@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user" , schema = "togethair")
+@Table(name = "person" , schema = "togethair")
 public class Person extends AbstractSuper implements Serializable {
 
     @Column(nullable = false , length = 100)
