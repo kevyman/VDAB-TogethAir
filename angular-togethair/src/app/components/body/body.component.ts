@@ -1,8 +1,10 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Flight } from 'src/app/services/flight';
+import { Flight } from 'src/app/models/flight';
 import { FlightService } from 'src/app/services/flight.service';
+import {PersonService} from "../../services/person.service";
+import {Person} from "../../models/person";
 
 @Component({
   selector: 'app-body',
@@ -12,7 +14,8 @@ import { FlightService } from 'src/app/services/flight.service';
 export class BodyComponent implements OnInit {
   public flights!: Flight[];
 
-  constructor(private flightService: FlightService) { }
+  constructor(private flightService: FlightService ,
+              private personService : PersonService) { }
 
   ngOnInit(): void {
   }
@@ -34,6 +37,19 @@ export class BodyComponent implements OnInit {
       (response: Flight) => {
         console.log(response);
         this.getFlights();
+        addForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onAddPerson(addForm: NgForm):void{
+    document.getElementById('addPersonCloseBtn')?.click();
+    this.personService.addPerson(addForm.value).subscribe(
+      (response: Person) => {
+        console.log(response);
         addForm.reset();
       },
       (error: HttpErrorResponse) => {
