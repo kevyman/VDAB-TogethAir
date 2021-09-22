@@ -4,7 +4,7 @@ import {NgForm} from '@angular/forms';
 import {Flight} from 'src/app/models/flight';
 import {FlightService} from 'src/app/services/flight.service';
 import {PersonService} from "../../services/person.service";
-import {Person, Role} from "../../models/person";
+import {Person} from "../../models/person";
 
 @Component({
   selector: 'app-body',
@@ -13,13 +13,9 @@ import {Person, Role} from "../../models/person";
 })
 export class BodyComponent implements OnInit {
   public flights!: Flight[];
-  // public roles : Role[] = [
-  //     Role.CLIENT
-  //   , Role.ADMIN
-  //   , Role.AIRLINE_EMPLOYEE
-  //   , Role.TOGETHAIR_EMPLOYEE];
 
-  roles : any[] = Object.values(Role);
+  public roles: string[] = ["ADMIN" , "TOGETHAIR_EMPLOYEE"  , "AIRLINE_EMPLOYEE" , "CLIENT"];
+
 
   // public values:string[] = Object.keys(Role).map(key => Role[key]).filter(k => !(parseInt(k) >= 0))
 
