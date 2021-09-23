@@ -19,7 +19,6 @@ public class Booking extends AbstractSuper{
     @Column(nullable = false , length = 100)
     private Double flightPrice;
 
-    @Column(nullable = false , length = 100)
     @ManyToOne
     private Person person;
 

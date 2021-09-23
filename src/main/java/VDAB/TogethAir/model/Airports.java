@@ -10,9 +10,9 @@ import javax.persistence.Id;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Airports{
+public class Airports extends AbstractSuper{
 
-    @Id
+    @Column(updatable = false)
     private String code;
 
     @Column(updatable = false)
