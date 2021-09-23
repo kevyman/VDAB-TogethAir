@@ -24,13 +24,13 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <span class="form-label">Flying from</span>
-                                    <input class="form-control" type="text" placeholder="City or airport">
+                                    <input class="form-control" type="text" placeholder="City or airport" (keydown)="searchAirport($event,'departure')">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <span class="form-label">Flying to</span>
-                                    <input class="form-control" type="text" placeholder="City or airport">
+                                    <input class="form-control" type="text" placeholder="City or airport"  (keydown)="searchAirport($event,'arrival')">
                                 </div>
                             </div>
                         </div>

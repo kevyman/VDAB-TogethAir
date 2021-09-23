@@ -12,13 +12,21 @@ import {Airport} from "../../models/airport";
 export class LandingComponent implements OnInit {
 
   private airports!: Airport[];
+  private departAirports!: Airport[];
+  private arrivalAirports!: Airport[];
 
   constructor(private airportService: AirportService) { }
+
+  ngOnInit(): void {
+    this.getAirports();
+
+  }
 
   public getAirports(): void {
     this.airportService.getAirports().subscribe(
       (response: Airport[]) => {
         this.airports = response;
+        console.log(response.toString())
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -26,8 +34,33 @@ export class LandingComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-    this.getAirports();
+
+
+  public searchAirport(event:any, box: string):void{
+    let results: Airport[] = [];
+    for (let airport of this.airports){
+      if(airport.code.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
+        ||airport.name.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
+        ||airport.cityName.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
+        ||airport.countryName.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1){
+        results.push(airport);
+      }
+    }
+    if(box=="departure"){
+      this.departAirports = results;
+    }else{
+      this.arrivalAirports = results;
+    }
+
+    console.log(JSON.stringify(results));
+
+    if(results.length == 0 || !event.target.value){
+      if(box=="departure"){
+        this.departAirports = [];
+      }else{
+        this.arrivalAirports = [];
+      }
+    }
   }
 
 }
