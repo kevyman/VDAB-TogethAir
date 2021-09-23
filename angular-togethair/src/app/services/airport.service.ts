@@ -7,11 +7,14 @@ import {Airport} from "../models/airport";
 @Injectable({
   providedIn: 'root'
 })
-export class AirportService{
-  private apiServerUrl =  environment.apiBaseUrl;
+export class AirportService {
+  private apiServerUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient) {
+  }
 
-  public getAirports(): Observable<Airport[]>{
+  public getAirports(): Observable<Airport[]> {
     return this.http.get<Airport[]>(`${this.apiServerUrl}/allAirports`)
   }
+}
+
