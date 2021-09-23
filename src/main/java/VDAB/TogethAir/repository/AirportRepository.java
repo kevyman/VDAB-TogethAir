@@ -1,8 +1,8 @@
 package VDAB.TogethAir.repository;
 
-import VDAB.TogethAir.model.Airports;
+import VDAB.TogethAir.model.Airport;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AirportRepository extends JpaRepository <Airports, Long> {
+public interface AirportRepository extends JpaRepository <Airport, Long> {
 
 }
