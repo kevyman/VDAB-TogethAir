@@ -9,6 +9,7 @@ import { BodyComponent } from './components/body/body.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LandingComponent } from './components/landing/landing.component';
+import { GeneralComponent } from './components/general/general.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { LandingComponent } from './components/landing/landing.component';
     HeaderComponent,
     FooterComponent,
     BodyComponent,
-    LandingComponent
+    LandingComponent,
+    GeneralComponent
   ],
   imports: [
     BrowserModule,
