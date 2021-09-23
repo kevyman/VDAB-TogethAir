@@ -1,4 +1,4 @@
-export interface Airports{
+export interface Airport{
   code: string;
   name: string;
   cityCode: string;
