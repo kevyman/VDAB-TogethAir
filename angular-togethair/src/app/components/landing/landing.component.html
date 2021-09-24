@@ -10,12 +10,12 @@
                     <form id="flightSearchForm" class="search-form" #form="ngForm" (ngSubmit)="onSubmit(form)" ngModel>
                         <div class="form-group">
                             <div class="form-checkbox">
-                                <label for="roundtrip">
-                                    <input value="true" ngModel type="radio" id="roundtrip" name="roundtrip" (change)="options=true" [checked]="options" >
+                                <label for="roundtrip" >
+                                    <input [value]="true" [(ngModel)]="options" type="radio" id="roundtrip" name="roundtrip" (change)="options=true" required>
                                     <span></span>Roundtrip
                                 </label>
                                 <label for="one-way">
-                                    <input value="false" ngModel type="radio" id="one-way" name="roundtrip"  (change)="options=false" [checked]="!options">
+                                    <input [value]="false" [(ngModel)]="options" type="radio" id="one-way" name="roundtrip"  (change)="options=false" >
                                     <span></span>One way
                                 </label>
                             </div>
