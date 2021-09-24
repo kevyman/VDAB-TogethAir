@@ -14,6 +14,7 @@ export class LandingComponent implements OnInit {
   airports!: Airport[];
   departAirports!: Airport[];
   arrivalAirports!: Airport[];
+  options: Boolean = false;
 
   constructor(private airportService: AirportService) { }
 
@@ -55,12 +56,12 @@ export class LandingComponent implements OnInit {
     }
 
     console.log("Departure List: " + JSON.stringify(this.departAirports));
-    
+
     console.log("Arrival List: " + JSON.stringify(this.arrivalAirports));
 
 
-    
-    
+
+
     // console.log(JSON.stringify(results));
 
     if(results.length == 0 || !event.target.value){

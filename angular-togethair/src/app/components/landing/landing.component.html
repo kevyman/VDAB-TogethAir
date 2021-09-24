@@ -7,17 +7,14 @@
                         <div class="form-group">
                             <div class="form-checkbox">
                                 <label for="roundtrip">
-                                    <input type="radio" id="roundtrip" name="flight-type" checked>
+                                    <input type="radio" id="roundtrip" name="flight-type" (change)="options=true" [checked]="options" >
                                     <span></span>Roundtrip
                                 </label>
                                 <label for="one-way">
-                                    <input type="radio" id="one-way" name="flight-type">
+                                    <input type="radio" [checked]="!options" (change)="options=false" id="one-way" name="flight-type">
                                     <span></span>One way
                                 </label>
-                                <label for="multi-city">
-                                    <input type="radio" id="multi-city" name="flight-type">
-                                    <span></span>Multi-City
-                                </label>
+
                             </div>
                         </div>
                         <div class="row">
@@ -48,7 +45,7 @@
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <div class="form-group">
+                                <div class="form-group" *ngIf="options">
                                     <span class="form-label">Returning</span>
                                     <input class="form-control" type="date" required>
                                 </div>
