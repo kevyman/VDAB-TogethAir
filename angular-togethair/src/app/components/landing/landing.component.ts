@@ -6,6 +6,7 @@ import {NgForm} from "@angular/forms";
 import {FlightService} from "../../services/flight.service";
 import {Flight} from "../../models/flight";
 import {Subscription} from "rxjs";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-landing',
@@ -20,7 +21,8 @@ export class LandingComponent implements OnInit {
   options: Boolean = true;
 
   constructor(private airportService: AirportService,
-              private flightService: FlightService) { }
+              private flightService: FlightService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.getAirports();
@@ -84,14 +86,14 @@ export class LandingComponent implements OnInit {
       (response: Flight) => {
         console.log(response);
         form.reset();
-
+        this.router.navigate(['/general'])
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
         form.reset();
       }
+
     );
   }
-
 
 }
