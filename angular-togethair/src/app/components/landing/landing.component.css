@@ -172,3 +172,17 @@
 .booking-form .submit-btn:focus {
 	opacity: 0.9;
 }
+
+.logoHeader{
+  width: 130px;
+  height: 95px;
+}
+
+.title{
+
+  margin-right: auto;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 22px;
+  padding-top: 8px;
+
+}
