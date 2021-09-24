@@ -11,9 +11,9 @@ import {Airport} from "../../models/airport";
 })
 export class LandingComponent implements OnInit {
 
-  private airports!: Airport[];
-  private departAirports!: Airport[];
-  private arrivalAirports!: Airport[];
+  airports!: Airport[];
+  departAirports!: Airport[];
+  arrivalAirports!: Airport[];
 
   constructor(private airportService: AirportService) { }
 
@@ -26,7 +26,6 @@ export class LandingComponent implements OnInit {
     this.airportService.getAirports().subscribe(
       (response: Airport[]) => {
         this.airports = response;
-        console.log(response.toString())
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -39,20 +38,30 @@ export class LandingComponent implements OnInit {
   public searchAirport(event:any, box: string):void{
     let results: Airport[] = [];
     for (let airport of this.airports){
-      if(airport.code.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
+      if(
+        airport.code.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
         ||airport.name.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
         ||airport.cityName.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1
         ||airport.countryName.toLowerCase().indexOf(event.target.value.toLowerCase()) !== -1){
         results.push(airport);
       }
     }
+
+
     if(box=="departure"){
-      this.departAirports = results;
+        this.departAirports = results.slice(0,10);
     }else{
-      this.arrivalAirports = results;
+        this.arrivalAirports = results.slice(0,10);
     }
 
-    console.log(JSON.stringify(results));
+    console.log("Departure List: " + JSON.stringify(this.departAirports));
+    
+    console.log("Arrival List: " + JSON.stringify(this.arrivalAirports));
+
+
+    
+    
+    // console.log(JSON.stringify(results));
 
     if(results.length == 0 || !event.target.value){
       if(box=="departure"){
@@ -61,6 +70,8 @@ export class LandingComponent implements OnInit {
         this.arrivalAirports = [];
       }
     }
+
+
   }
 
 }

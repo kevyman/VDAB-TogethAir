@@ -24,13 +24,19 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <span class="form-label">Flying from</span>
-                                    <input class="form-control" type="text" placeholder="City or airport" (keydown)="searchAirport($event,'departure')">
+                                    <input class="form-control" list="departureListOptions" placeholder="City or airport" (keydown)="searchAirport($event,'departure')" id="departureList" >
+                                    <datalist id="departureListOptions">
+                                        <option *ngFor="let airport of departAirports" value="{{airport.name + ' - ' + airport.cityName + ' - ' + airport.countryName}}">
+                                      </datalist>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <span class="form-label">Flying to</span>
-                                    <input class="form-control" type="text" placeholder="City or airport"  (keydown)="searchAirport($event,'arrival')">
+                                    <input class="form-control" placeholder="City or airport"  list="arrivalListOptions" (keydown)="searchAirport($event,'arrival')" id="arrivalList">
+                                    <datalist id="arrivalListOptions">
+                                        <option *ngFor="let airport of arrivalAirports" value="{{airport.name + ' - ' + airport.cityName + ' - ' + airport.countryName}}">
+                                    </datalist>
                                 </div>
                             </div>
                         </div>
