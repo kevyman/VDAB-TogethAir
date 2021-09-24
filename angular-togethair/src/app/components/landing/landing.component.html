@@ -22,7 +22,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <span class="form-label">Flying from</span>
-                                    <input ngModel name="departureAirport" class="form-control" list="departureListOptions" placeholder="City or airport" (keydown)="searchAirport($event,'departure')" id="departureList" >
+                                    <input ngModel name="departureAirport" class="form-control" list="departureListOptions" placeholder="City or airport" (keydown)="searchAirport($event,'departure')" id="departureList" required>
                                     <datalist id="departureListOptions">
                                         <option *ngFor="let airport of departAirports" value="{{airport.name + ' - ' + airport.cityName + ' - ' + airport.countryName}}">
                                       </datalist>
@@ -31,7 +31,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <span class="form-label">Flying to</span>
-                                    <input ngModel name="destinationAirport" class="form-control" placeholder="City or airport"  list="arrivalListOptions" (keydown)="searchAirport($event,'arrival')" id="arrivalList">
+                                    <input ngModel name="destinationAirport" class="form-control" placeholder="City or airport"  list="arrivalListOptions" (keydown)="searchAirport($event,'arrival')" id="arrivalList" required>
                                     <datalist id="arrivalListOptions">
                                         <option *ngFor="let airport of arrivalAirports" value="{{airport.name + ' - ' + airport.cityName + ' - ' + airport.countryName}}">
                                     </datalist>
@@ -54,7 +54,7 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <span class="form-label">Adults (18+)</span>
-                                    <select ngModel name="adults" class="form-control">
+                                    <select ngModel name="adults" class="form-control" required>
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -65,7 +65,7 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <span class="form-label">Children (0-17)</span>
-                                    <select ngModel name="children" class="form-control">
+                                    <select ngModel name="children" class="form-control" required>
                                         <option>0</option>
                                         <option>1</option>
                                         <option>2</option>
@@ -78,7 +78,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <span class="form-label">Travel class</span>
-                                    <select ngModel name="flightClass" class="form-control">
+                                    <select ngModel name="flightClass" class="form-control" required>
                                         <option value="ECONOMY_CLASS">Economy class</option>
                                         <option value="BUSINESS_CLASS">Business class</option>
                                         <option value="FIRST_CLASS">First class</option>

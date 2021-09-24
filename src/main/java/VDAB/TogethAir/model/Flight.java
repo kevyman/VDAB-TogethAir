@@ -37,7 +37,7 @@ public class Flight extends AbstractSuper {
     @Column(nullable = true , length = 100)
     private Double price;
 
-//    @Column(nullable = false , length = 100)
+    @Column(nullable = false , length = 100)
     private Boolean roundtrip;
 
     @Enumerated(EnumType.STRING)
