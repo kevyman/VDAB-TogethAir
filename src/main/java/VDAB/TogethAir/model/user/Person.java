@@ -1,5 +1,6 @@
 package VDAB.TogethAir.model.user;
 
+import VDAB.TogethAir.enums.UserRole;
 import VDAB.TogethAir.model.AbstractSuper;
 import lombok.AllArgsConstructor;
 import lombok.Data;

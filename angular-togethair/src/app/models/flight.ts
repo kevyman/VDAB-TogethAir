@@ -6,4 +6,8 @@ export interface Flight{
   destinationTime: Date;
   flightDuration: number;
   price: number;
+  flightClass : string;
+  roundtrip : boolean;
+  children : number;
+  adults: number;
 }

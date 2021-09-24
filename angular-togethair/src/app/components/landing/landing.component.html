@@ -1,27 +1,28 @@
+
+
 <div id="booking" class="section">
     <div class="section-center">
         <div class="container">
             <div class="row">
                 <div class="booking-form">
-                    <form>
+                    <form id="flightSearchForm" class="search-form" #form="ngForm" (ngSubmit)="onSubmit(form)" ngModel>
                         <div class="form-group">
                             <div class="form-checkbox">
                                 <label for="roundtrip">
-                                    <input type="radio" id="roundtrip" name="flight-type" (change)="options=true" [checked]="options" >
+                                    <input value="true" ngModel type="radio" id="roundtrip" name="roundtrip" (change)="options=true" [checked]="options" >
                                     <span></span>Roundtrip
                                 </label>
                                 <label for="one-way">
-                                    <input type="radio" [checked]="!options" (change)="options=false" id="one-way" name="flight-type">
+                                    <input value="false" ngModel type="radio" id="one-way" name="roundtrip"  (change)="options=false" [checked]="!options">
                                     <span></span>One way
                                 </label>
-
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <span class="form-label">Flying from</span>
-                                    <input class="form-control" list="departureListOptions" placeholder="City or airport" (keydown)="searchAirport($event,'departure')" id="departureList" >
+                                    <input ngModel name="departureAirport" class="form-control" list="departureListOptions" placeholder="City or airport" (keydown)="searchAirport($event,'departure')" id="departureList" >
                                     <datalist id="departureListOptions">
                                         <option *ngFor="let airport of departAirports" value="{{airport.name + ' - ' + airport.cityName + ' - ' + airport.countryName}}">
                                       </datalist>
@@ -30,7 +31,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <span class="form-label">Flying to</span>
-                                    <input class="form-control" placeholder="City or airport"  list="arrivalListOptions" (keydown)="searchAirport($event,'arrival')" id="arrivalList">
+                                    <input ngModel name="destinationAirport" class="form-control" placeholder="City or airport"  list="arrivalListOptions" (keydown)="searchAirport($event,'arrival')" id="arrivalList">
                                     <datalist id="arrivalListOptions">
                                         <option *ngFor="let airport of arrivalAirports" value="{{airport.name + ' - ' + airport.cityName + ' - ' + airport.countryName}}">
                                     </datalist>
@@ -41,19 +42,19 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <span class="form-label">Departing</span>
-                                    <input class="form-control" type="date" required>
+                                    <input ngModel name="departureTime" class="form-control" type="datetime-local" required>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group" *ngIf="options">
                                     <span class="form-label">Returning</span>
-                                    <input class="form-control" type="date" required>
+                                    <input ngModel name="destinationTime" class="form-control" type="datetime-local" required>
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <span class="form-label">Adults (18+)</span>
-                                    <select class="form-control">
+                                    <select ngModel name="adults" class="form-control">
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -64,7 +65,7 @@
                             <div class="col-md-2">
                                 <div class="form-group">
                                     <span class="form-label">Children (0-17)</span>
-                                    <select class="form-control">
+                                    <select ngModel name="children" class="form-control">
                                         <option>0</option>
                                         <option>1</option>
                                         <option>2</option>
@@ -77,17 +78,17 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <span class="form-label">Travel class</span>
-                                    <select class="form-control">
-                                        <option>Economy class</option>
-                                        <option>Business class</option>
-                                        <option>First class</option>
+                                    <select ngModel name="flightClass" class="form-control">
+                                        <option value="ECONOMY_CLASS">Economy class</option>
+                                        <option value="BUSINESS_CLASS">Business class</option>
+                                        <option value="FIRST_CLASS">First class</option>
                                     </select>
                                     <span class="select-arrow"></span>
                                 </div>
                             </div>
                             <div class="col-md-3">
                                 <div class="form-btn">
-                                    <button routerLink="/general" routerLinkActive="active" class="submit-btn">Show flights</button>
+                                    <button class="submit-btn" type="submit">Show flights</button>
                                 </div>
                             </div>
                         </div>

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {Flight} from "../../models/flight";
 import {HttpErrorResponse} from "@angular/common/http";
 import {AirportService} from "../../services/airport.service";
 import {Airport} from "../../models/airport";
+import {NgForm} from "@angular/forms";
+import {FlightService} from "../../services/flight.service";
+import {Flight} from "../../models/flight";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-landing',
@@ -14,9 +17,10 @@ export class LandingComponent implements OnInit {
   airports!: Airport[];
   departAirports!: Airport[];
   arrivalAirports!: Airport[];
-  options: Boolean = false;
+  options: Boolean = true;
 
-  constructor(private airportService: AirportService) { }
+  constructor(private airportService: AirportService,
+              private flightService: FlightService) { }
 
   ngOnInit(): void {
     this.getAirports();
@@ -71,8 +75,23 @@ export class LandingComponent implements OnInit {
         this.arrivalAirports = [];
       }
     }
-
-
   }
+
+  public onSubmit(form: NgForm):void {
+    console.log(form.value)
+
+    this.flightService.addFlight(form.value).subscribe(
+      (response: Flight) => {
+        console.log(response);
+        form.reset();
+
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        form.reset();
+      }
+    );
+  }
+
 
 }
