@@ -67,9 +67,14 @@ body {
   width: 40%;
   text-align: left;
 }
-.card-big .card__info small {
+.card-big .card__info{
   color: #8B8B8B;
 }
+.small {
+  color: #8B8B8B;
+  font-size:10px;
+}
+
 .card-big .icon-center-wrap {
   float: left;
   text-align: center;
