@@ -138,3 +138,30 @@
   </div>
 </div>
 
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-3 col-xs-12" *ngFor="let flight of flights">
+      <article class="card card-big mb15">
+        <div class="card__img-wrap">
+          <img class="coverPhoto" src="https://tse4.mm.bing.net/th?id=OIP.FtkZJVw4ND071rsucFu-hQHaDn&pid=Api">
+          <h4 class="title title-overlay-center">Explore {{flight.destinationAirport.cityName}}</h4>
+        </div>
+        <div class="card__info">
+          <div class="title-left-wrap"> <h5>{{flight.departureAirport.cityName}}</h5> <small>{{flight.departureAirport.code}}</small></div>
+          <span class="icon-center-wrap"><i class="material-icons rotate90"></i></span>
+          <div class="title-right-wrap"> <h5>{{flight.destinationAirport.cityName}}</h5> <small>{{flight.destinationAirport.code}} </small></div>
+        </div> <!--  card__info //  -->
+        <div class="card__pricelist">
+          <div class="cost">
+            <div class="logo-wrap"><img src="https://tse3.mm.bing.net/th?id=OIP.ev1T03ny_3iC3xALrAecFAHaHa&pid=Api"></div>
+            <div class="icon-wrap"> <i class="material-icons"></i>  <small>{{flight.departureTime}}</small> </div>
+            <div class="price-wrap"><var class="price"><span class="currency">AED</span> 540</var>
+              <a rel="nofollow" target="_blank" href="" class="small">Book</a></div>
+          </div><!--  cost //  -->
+        </div> <!-- card__pricelist // -->
+      </article> <!-- card // -->
+    </div><!-- col // -->
+</div>
+</div>
+
