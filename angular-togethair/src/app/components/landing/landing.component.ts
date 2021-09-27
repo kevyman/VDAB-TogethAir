@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { HttpErrorResponse } from "@angular/common/http";
 import { AirportService } from "../../services/airport.service";
 import { Airport } from "../../models/airport";
 import { NgForm } from "@angular/forms";
 import { FlightService } from "../../services/flight.service";
 import { Flight } from "../../models/flight";
+import{DataService} from "../../services/data.service";
 
 import { Subscription } from "rxjs";
 import { Router } from '@angular/router';
@@ -24,15 +25,27 @@ export class LandingComponent implements OnInit {
   newFlight !: Flight;
 
 
+  public airportPair: string="";
+
+  public subscription!: Subscription;
+
   constructor(private airportService: AirportService,
+    private dataService: DataService,
     private flightService: FlightService,
     private router: Router) { }
 
 
   ngOnInit(): void {
     this.getAirports();
+    this.subscription = this.dataService.airportPair.subscribe(airportPair => this.airportPair = airportPair);
 
   }
+
+   ngOnDestroy(): void{
+
+    this.subscription.unsubscribe();
+
+   }
 
   public getAirports(): void {
     this.airportService.getAirports().subscribe(
@@ -95,7 +108,7 @@ export class LandingComponent implements OnInit {
 
     this.newFlight.price=this.priceCalculation(this.newFlight.destinationAirport,this.newFlight.departureAirport);
 
-
+    this.dataService.changeMessage(this.newFlight.departureAirport.name + "/" + this.newFlight.destinationAirport.name);
 
     this.flightService.addFlight(this.newFlight).subscribe(
       (response: Flight) => {

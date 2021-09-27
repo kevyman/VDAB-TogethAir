@@ -12,6 +12,7 @@ import { LandingComponent } from './components/landing/landing.component';
 import { GeneralComponent } from './components/general/general.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,6 @@ import { GeneralComponent } from './components/general/general.component';
     BodyComponent,
     LandingComponent,
     GeneralComponent
-
   ],
   imports: [
     BrowserModule,

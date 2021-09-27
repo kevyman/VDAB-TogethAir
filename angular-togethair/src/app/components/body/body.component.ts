@@ -1,18 +1,26 @@
 import {HttpErrorResponse} from '@angular/common/http';
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {NgForm} from '@angular/forms';
 import {Flight} from 'src/app/models/flight';
 import {FlightService} from 'src/app/services/flight.service';
 import {PersonService} from "../../services/person.service";
 import {Person} from "../../models/person";
+import{DataService} from "../../services/data.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css']
 })
-export class BodyComponent implements OnInit {
+export class BodyComponent implements OnInit, OnDestroy {
   public flights!: Flight[];
+
+  public airportPair: string="";
+
+  public subscription!: Subscription;
+
+
 
   public roles: string[] = ["ADMIN" , "TOGETHAIR_EMPLOYEE"  , "AIRLINE_EMPLOYEE" , "CLIENT"];
 
@@ -20,12 +28,29 @@ export class BodyComponent implements OnInit {
   // public values:string[] = Object.keys(Role).map(key => Role[key]).filter(k => !(parseInt(k) >= 0))
 
   constructor(private flightService: FlightService,
-              private personService: PersonService) {
+              private personService: PersonService,
+              private dataService: DataService) {
   }
 
 
   ngOnInit(): void {
+
+    this.subscription = this.dataService.airportPair.subscribe(airportPair => this.airportPair = airportPair);
+    console.log(this.airportPair);
   }
+
+
+ ngOnDestroy(): void{
+
+  this.subscription.unsubscribe();
+
+ }
+
+
+
+
+
+
 
   public getFlights(): void {
     this.flightService.getFlights().subscribe(
@@ -64,5 +89,8 @@ export class BodyComponent implements OnInit {
       }
     );
   }
+
+
+
 
 }
