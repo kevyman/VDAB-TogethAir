@@ -93,6 +93,8 @@ export class LandingComponent implements OnInit {
 
     this.newFlight.flightDuration = this.calculateDuration(this.newFlight.departureAirport, this.newFlight.destinationAirport);
 
+    this.newFlight.price=this.priceCalculation(this.newFlight.destinationAirport,this.newFlight.departureAirport);
+
 
 
     this.flightService.addFlight(this.newFlight).subscribe(
@@ -141,8 +143,29 @@ export class LandingComponent implements OnInit {
 
     return (d/1000)/750 + .8;
 
-
   }
 
+  public priceCalculation(airport1: Airport, airport2: Airport) {
+    const R = 6371e3; // metres
+
+    let lat1 = Number(airport1.lat);
+    let lat2 = Number(airport2.lat);
+    let lon1 = Number(airport1.lon);
+    let lon2 = Number(airport2.lon);
+
+    const φ1 = lat1 * Math.PI / 180; // φ, λ in radians
+    const φ2 = lat2 * Math.PI / 180;
+    const Δφ = (lat2 - lat1) * Math.PI / 180;
+    const Δλ = (lon2 - lon1) * Math.PI / 180;
+
+    const a = Math.sin(Δφ / 2) * Math.sin(Δφ / 2) +
+      Math.cos(φ1) * Math.cos(φ2) *
+      Math.sin(Δλ / 2) * Math.sin(Δλ / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    const d = R * c; // in metres
+    let newNumber =(d / 1000) * 0.10 + Math.random() * 8;
+   return Number(newNumber.toFixed(2));
+  }
 
 }
