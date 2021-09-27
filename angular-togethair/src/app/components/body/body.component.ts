@@ -6,7 +6,7 @@ import {FlightService} from 'src/app/services/flight.service';
 import {PersonService} from "../../services/person.service";
 import {Person} from "../../models/person";
 import{DataService} from "../../services/data.service";
-import {Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-body',
@@ -37,18 +37,14 @@ export class BodyComponent implements OnInit, OnDestroy {
 
     this.subscription = this.dataService.airportPair.subscribe(airportPair => this.airportPair = airportPair);
     console.log(this.airportPair);
+    this.getFlights()
   }
 
 
  ngOnDestroy(): void{
 
   this.subscription.unsubscribe();
-
  }
-
-
-
-
 
 
 
