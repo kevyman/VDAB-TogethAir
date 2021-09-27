@@ -25,6 +25,12 @@ public class AirportController {
         return new ResponseEntity<>(airports, HttpStatus.OK);
     }
 
+    @GetMapping("/findAirportByName/{airport}")
+    public ResponseEntity<Airport> findAirportByName(@PathVariable String airport) {
+        Airport findAirport = airportService.findByName(airport);
+        return new ResponseEntity<Airport>(findAirport, HttpStatus.OK);
+    }
+
 
 }
 

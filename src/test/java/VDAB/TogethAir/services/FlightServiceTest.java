@@ -7,6 +7,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import VDAB.TogethAir.model.Airport;
 import VDAB.TogethAir.model.Flight;
 import VDAB.TogethAir.repository.FlightRepository;
 
@@ -31,18 +32,18 @@ class FlightServiceTest {
     @Test
     void testAddFlight() {
         Flight flight = new Flight();
-        flight.setDepartureAirport("Departure Airport");
+        flight.setDepartureAirport(new Airport());
         flight.setPrice(10.0);
-        flight.setDestinationAirport("Destination Airport");
+        flight.setDestinationAirport(new Airport());
         flight.setDepartureTime(LocalDateTime.of(1, 1, 1, 1, 1));
         flight.setFlightDuration(1L);
         flight.setDestinationTime(LocalDateTime.of(1, 1, 1, 1, 1));
         when(this.flightRepository.save((Flight) any())).thenReturn(flight);
 
         Flight flight1 = new Flight();
-        flight1.setDepartureAirport("Departure Airport");
+        flight1.setDepartureAirport(new Airport());
         flight1.setPrice(10.0);
-        flight1.setDestinationAirport("Destination Airport");
+        flight1.setDestinationAirport(new Airport());
         flight1.setDepartureTime(LocalDateTime.of(1, 1, 1, 1, 1));
         flight1.setFlightDuration(1L);
         flight1.setDestinationTime(LocalDateTime.of(1, 1, 1, 1, 1));

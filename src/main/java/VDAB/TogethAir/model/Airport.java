@@ -2,15 +2,20 @@ package VDAB.TogethAir.model;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+import javax.persistence.*;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Airport extends AbstractSuper{
+@Data
+public class Airport {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(updatable = false)
     private String code;
@@ -45,50 +50,4 @@ public class Airport extends AbstractSuper{
     @Column(updatable = false)
     private String city;
 
-
-
-
-    public String getCode() {
-        return code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getCityCode() {
-        return cityCode;
-    }
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public String getCountryName() {
-        return countryName;
-    }
-
-    public String getCountryCode() {
-        return countryCode;
-    }
-
-    public String getTimezone() {
-        return timezone;
-    }
-
-    public String getLat() {
-        return lat;
-    }
-
-    public String getLon() {
-        return lon;
-    }
-
-    public Integer getNumAirports() {
-        return numAirports;
-    }
-
-    public String getCity() {
-        return city;
-    }
 }

@@ -1,7 +1,6 @@
 package VDAB.TogethAir.model.user;
 
 import VDAB.TogethAir.enums.UserRole;
-import VDAB.TogethAir.model.AbstractSuper;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,7 +13,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "person" , schema = "togethair")
-public class Person extends AbstractSuper implements Serializable {
+public class Person implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false , length = 100)
     private String name;
