@@ -16,5 +16,9 @@ export class AirportService {
   public getAirports(): Observable<Airport[]> {
     return this.http.get<Airport[]>(`${this.apiServerUrl}/allAirports`)
   }
+
+  findAirportByName(airport: string): Observable<Airport> {
+    return this.http.get<Airport>(`${this.apiServerUrl}/findAirportByName/${airport}`)
+  }
 }
 

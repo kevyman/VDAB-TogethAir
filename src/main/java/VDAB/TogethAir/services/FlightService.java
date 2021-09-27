@@ -1,6 +1,8 @@
 package VDAB.TogethAir.services;
 
+import VDAB.TogethAir.model.Airport;
 import VDAB.TogethAir.model.Flight;
+import VDAB.TogethAir.repository.AirportRepository;
 import VDAB.TogethAir.repository.FlightRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,9 +15,14 @@ import java.util.List;
 
 public class FlightService {
 
+    public AirportRepository airportRepository;
+
     private FlightRepository flightRepository;
 
-    public  Flight addFlight(Flight flight) {return flightRepository.save(flight);}
+    public  Flight addFlight(Flight flight) {
+      flight.getDepartureAirport().setId(airportRepository.findAirportByName(flight.getDepartureAirport().getName()).getId());
+      flight.getDestinationAirport().setId(airportRepository.findAirportByName(flight.getDestinationAirport().getName()).getId());
+        return flightRepository.save(flight);}
 
     public List<Flight> findAllFlights(){return flightRepository.findAll();}
 

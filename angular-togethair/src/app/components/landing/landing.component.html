@@ -26,7 +26,7 @@
                                     <span class="form-label">Flying from</span>
                                     <input ngModel name="departureAirport" class="form-control" list="departureListOptions" placeholder="City or airport" (keydown)="searchAirport($event,'departure')" id="departureList" required>
                                     <datalist id="departureListOptions">
-                                        <option *ngFor="let airport of departAirports" value="{{airport.name + ' - ' + airport.cityName + ' - ' + airport.countryName}}">
+                                      <option *ngFor="let airport of departAirports" value="{{airport.name}}">{{ airport.cityName + ' - ' + airport.countryName}}</option>
                                       </datalist>
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
                                     <span class="form-label">Flying to</span>
                                     <input ngModel name="destinationAirport" class="form-control" placeholder="City or airport"  list="arrivalListOptions" (keydown)="searchAirport($event,'arrival')" id="arrivalList" required>
                                     <datalist id="arrivalListOptions">
-                                        <option *ngFor="let airport of arrivalAirports" value="{{airport.name + ' - ' + airport.cityName + ' - ' + airport.countryName}}">
+                                      <option *ngFor="let airport of arrivalAirports" value="{{airport.name}}">{{ airport.cityName + ' - ' + airport.countryName}}</option>
                                     </datalist>
                                 </div>
                             </div>
