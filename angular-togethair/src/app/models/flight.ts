@@ -1,4 +1,5 @@
 import {Airport} from "./airport";
+import {Airline} from "./airline";
 
 
 export interface Flight{
@@ -13,4 +14,5 @@ export interface Flight{
   roundtrip : boolean;
   children : number;
   adults: number;
+  airline: Airline;
 }

@@ -23,6 +23,11 @@ public class Flight {
     @JoinColumn(name="fk_departure_airport_id")
     private Airport departureAirport;
 
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinColumn(name="fk_airline_id")
+    private Airline airline;
+
     @OneToOne(fetch = FetchType.LAZY , cascade = CascadeType.MERGE)
     @JoinColumn(name="fk_destination_airport_id")
     private Airport destinationAirport;
