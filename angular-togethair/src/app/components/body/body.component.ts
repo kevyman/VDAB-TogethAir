@@ -16,9 +16,15 @@ import {Observable, Subscription} from "rxjs";
 export class BodyComponent implements OnInit, OnDestroy {
   public flights!: Flight[];
 
+  public filteredFlights: Flight[]=[];
+
   public airportPair: string="";
 
   public subscription!: Subscription;
+
+  public destinationAirport!: string;
+
+  public departureAirport!: string;
 
 
 
@@ -37,7 +43,12 @@ export class BodyComponent implements OnInit, OnDestroy {
 
     this.subscription = this.dataService.airportPair.subscribe(airportPair => this.airportPair = airportPair);
     console.log(this.airportPair);
-    this.getFlights()
+    const array = this.airportPair.split("/");
+    console.log(array)
+    this.destinationAirport = array[1];
+    this.departureAirport = array[0];
+    this.getFlights();
+
   }
 
 
@@ -52,6 +63,14 @@ export class BodyComponent implements OnInit, OnDestroy {
     this.flightService.getFlights().subscribe(
       (response: Flight[]) => {
         this.flights = response;
+        for(let i = 0;i < this.flights.length; i++){
+          let flight = this.flights[i];
+          if(
+            flight.destinationAirport.name==this.destinationAirport && flight.departureAirport.name==this.departureAirport
+          ){
+            this.filteredFlights.push(flight);
+          }
+        }
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -85,7 +104,6 @@ export class BodyComponent implements OnInit, OnDestroy {
       }
     );
   }
-
 
 
 
