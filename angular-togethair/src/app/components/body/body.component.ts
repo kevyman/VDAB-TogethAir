@@ -40,7 +40,6 @@ export class BodyComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-
     this.subscription = this.dataService.airportPair.subscribe(airportPair => this.airportPair = airportPair);
     console.log(this.airportPair);
     const array = this.airportPair.split("/");

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
 import {GeneralComponent} from "./components/general/general.component";
+import {ProfileComponent} from "./components/pages/profile/profile.component";
 
 const routes: Routes = [
   {
@@ -9,7 +10,12 @@ const routes: Routes = [
     component:LandingComponent},
   {
     path:'general',
-    component:GeneralComponent}
+    component:GeneralComponent},
+  {
+    path: 'profile',
+    component: ProfileComponent
+
+  }
 ];
 
 @NgModule({

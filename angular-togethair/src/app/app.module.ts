@@ -10,6 +10,12 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LandingComponent } from './components/landing/landing.component';
 import { GeneralComponent } from './components/general/general.component';
+import {AuthModule} from "@auth0/auth0-angular";
+
+import {environment as env} from '../environments/environment';
+import { LoginButtonComponent } from './components/login-button/login-button.component';
+import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
+import { ProfileComponent } from './components/pages/profile/profile.component';
 
 
 
@@ -20,13 +26,17 @@ import { GeneralComponent } from './components/general/general.component';
     FooterComponent,
     BodyComponent,
     LandingComponent,
-    GeneralComponent
+    GeneralComponent,
+    LoginButtonComponent,
+    LogoutButtonComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthModule.forRoot({...env.auth})
   ],
   providers: [],
   bootstrap: [AppComponent]

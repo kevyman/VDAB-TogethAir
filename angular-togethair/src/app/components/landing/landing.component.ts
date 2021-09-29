@@ -9,6 +9,7 @@ import{DataService} from "../../services/data.service";
 
 import { Subscription } from "rxjs";
 import { Router } from '@angular/router';
+import {AuthService} from "@auth0/auth0-angular";
 
 
 @Component({
@@ -32,7 +33,9 @@ export class LandingComponent implements OnInit {
   constructor(private airportService: AirportService,
     private dataService: DataService,
     private flightService: FlightService,
-    private router: Router) { }
+    private router: Router,
+    public  auth: AuthService
+              ) { }
 
 
   ngOnInit(): void {
