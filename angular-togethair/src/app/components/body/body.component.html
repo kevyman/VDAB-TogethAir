@@ -149,14 +149,14 @@
         </div>
         <div class="card__info">
           <div class="title-left-wrap"> <h5>{{flight.departureAirport.cityName}}</h5> <small>{{flight.departureAirport.code}}</small></div>
-          <span class="icon-center-wrap"><i class="material-icons rotate90"></i></span>
+          <span class="icon-center-wrap"><img src="assets/globe.svg"></span>
           <div class="title-right-wrap"> <h5>{{flight.destinationAirport.cityName}}</h5> <small>{{flight.destinationAirport.code}} </small></div>
         </div> <!--  card__info //  -->
         <div class="card__pricelist">
           <div class="cost">
             <div class="logo-wrap"><img src="https://tse3.mm.bing.net/th?id=OIP.ev1T03ny_3iC3xALrAecFAHaHa&pid=Api"></div>
             <div class="icon-wrap">{{flight.flightDuration}}h00 <br> <div class="small">{{flight.departureTime}}</div> </div>
-            <div class="price-wrap"><var class="price"><span class="currency">EUR</span>{{flight.price}}</var>
+            <div class="price-wrap"><var class="price"><span class="currency">EUR</span><br>{{flight.price}}</var>
               <a rel="nofollow" target="_blank" href="" class="small">Book</a></div>
           </div><!--  cost //  -->
         </div> <!-- card__pricelist // -->
