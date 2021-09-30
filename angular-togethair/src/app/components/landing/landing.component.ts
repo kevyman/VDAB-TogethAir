@@ -25,7 +25,6 @@ export class LandingComponent implements OnInit {
   departAirports!: Airport[];
   arrivalAirports!: Airport[];
   options: Boolean = true;
-  newFlight !: Flight;
   airlines: Airline[] =[];
 
 
@@ -115,29 +114,11 @@ export class LandingComponent implements OnInit {
 
   public onSubmit(form: NgForm): void {
 
-    // console.log(form.value.departureAirport, form.value.destinationAirport)
+    let newFlight = this.buildFlight(form.value);
 
-    this.newFlight = form.value;
+    this.dataService.changeMessage(newFlight.departureAirport.name + "/" + newFlight.destinationAirport.name);
 
-    this.newFlight.departureAirport = this.findAirportByName(form.value.departureAirport);
-    // console.log(this.newFlight.departureAirport.id)
-    this.newFlight.destinationAirport = this.findAirportByName(form.value.destinationAirport);
-    // console.log(this.newFlight.destinationAirport.id)
-
-    this.newFlight.flightDuration = this.calculateDuration(this.newFlight.departureAirport, this.newFlight.destinationAirport);
-
-    this.newFlight.price=this.priceCalculation(this.newFlight.destinationAirport,this.newFlight.departureAirport);
-
-
-    let tempIndex = Math.floor(Math.random() * (this.airlines.length));
-  //  console.log("TempIndex: " + tempIndex);
-    let tempAirline = this.airlines[tempIndex];
-  //  console.log("TempAirline: " + JSON.stringify(tempAirline));
-    this.newFlight.airline = tempAirline;
-
-    this.dataService.changeMessage(this.newFlight.departureAirport.name + "/" + this.newFlight.destinationAirport.name);
-
-    this.flightService.addFlight(this.newFlight).subscribe(
+    this.flightService.addFlight(newFlight).subscribe(
       (response: Flight) => {
         console.log(response);
         form.reset();
@@ -149,6 +130,28 @@ export class LandingComponent implements OnInit {
       }
 
     );
+  }
+
+  public buildFlight(inputFlight: Flight): Flight{
+
+    let tempFlight: Flight = inputFlight;
+
+    tempFlight.departureAirport = this.findAirportByName(String(inputFlight.departureAirport));
+
+    tempFlight.destinationAirport = this.findAirportByName(String(inputFlight.destinationAirport));
+ 
+    tempFlight.flightDuration = this.calculateDuration(tempFlight.departureAirport, tempFlight.destinationAirport);
+
+    let tempPrice: number = this.priceCalculation(tempFlight.destinationAirport,tempFlight.departureAirport);
+
+    if(tempFlight.roundtrip){
+      tempPrice *= 2;
+    }
+
+    tempFlight.price = tempPrice;
+    tempFlight.airline = this.airlines[Math.floor(Math.random() * (this.airlines.length))];
+
+    return tempFlight;
   }
 
 
