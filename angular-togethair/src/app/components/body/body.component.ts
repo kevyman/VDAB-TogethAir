@@ -6,7 +6,7 @@ import {FlightService} from 'src/app/services/flight.service';
 import {PersonService} from "../../services/person.service";
 import {Person} from "../../models/person";
 import{DataService} from "../../services/data.service";
-import {Observable, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-body',

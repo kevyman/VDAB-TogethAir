@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './components/landing/landing.component';
 import {GeneralComponent} from "./components/general/general.component";
 import {ProfileComponent} from "./components/pages/profile/profile.component";
+import {AuthGuard} from "@auth0/auth0-angular";
 
 const routes: Routes = [
   {
@@ -13,8 +14,8 @@ const routes: Routes = [
     component:GeneralComponent},
   {
     path: 'profile',
-    component: ProfileComponent
-
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
