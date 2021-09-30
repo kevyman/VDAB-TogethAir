@@ -25,6 +25,14 @@ body {
 
 }
 
+.logo-wrap{
+  /*object-fit: fill;*/
+  width: 34px !important;
+  height: 34px !important;
+}
+.icon-wrap{
+  margin-left: 65px;
+}
 .card:hover{
   box-shadow: 5px 6px 6px 2px #e9ecef;
   transform: scale(1.1)
