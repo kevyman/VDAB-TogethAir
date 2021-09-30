@@ -19,4 +19,7 @@ export class HeaderComponent implements OnInit {
     this.auth.logout({returnTo: this.doc.location.origin})
   }
 
+  loginWithRedirect():void{
+    this.auth.loginWithRedirect();
+  }
 }

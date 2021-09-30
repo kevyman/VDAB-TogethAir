@@ -48,7 +48,11 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a style="color: firebrick" class="nav-link" (click)="logout()" href="">Log Out</a>
+            <a *ngIf="auth.isAuthenticated$ | async" style="color: firebrick" class="nav-link" (click)="logout()" href="">Log Out</a>
+          </li>
+
+          <li class="nav-item">
+            <a *ngIf="(auth.isAuthenticated$ | async) == false" style="color: green" class="nav-link" (click)="loginWithRedirect()" href="">Log In</a>
           </li>
         </ul>
       </div>
