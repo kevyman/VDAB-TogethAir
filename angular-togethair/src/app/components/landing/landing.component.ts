@@ -204,7 +204,7 @@ export class LandingComponent implements OnInit {
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
     const d = R * c; // in metres
-    let newNumber =(d / 1000) * 0.10 + Math.random() * 8;
+    let newNumber =(d / 1000) * 0.05 + Math.random() * 8;
    return Number(newNumber.toFixed(2));
   }
 
