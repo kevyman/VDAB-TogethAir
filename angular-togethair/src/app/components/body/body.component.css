@@ -20,8 +20,9 @@ body {
   border-radius: 8px;
   overflow: hidden;
   transition: all 0.2s ease;
-  cursor: pointer
-  /*margin-top: 50px;*/
+  cursor: pointer;
+  margin-top: 50px;
+
 }
 
 .card:hover{
