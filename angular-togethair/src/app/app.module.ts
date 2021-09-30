@@ -16,6 +16,7 @@ import {environment as env} from '../environments/environment';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
+import { AddButtonsComponent } from './components/add-buttons/add-buttons.component';
 
 
 
@@ -29,7 +30,8 @@ import { ProfileComponent } from './components/pages/profile/profile.component';
     GeneralComponent,
     LoginButtonComponent,
     LogoutButtonComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddButtonsComponent
   ],
   imports: [
     BrowserModule,
