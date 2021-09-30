@@ -68,7 +68,9 @@
               <div class="col-md-2">
                 <div class="form-group">
                   <span class="form-label">Adults (18+)</span>
-                  <select ngModel name="adults" class="form-control" required>
+                  <select ngModel name="adults" placeholder="0" class="form-control" required>
+                    <option value="" disabled selected hidden>0</option>
+                    <option>0</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -80,9 +82,11 @@
                 <div class="form-group">
                   <span class="form-label">Children (0-17)</span>
                   <select ngModel name="children" class="form-control" required>
+                    <option value="" disabled selected hidden>0</option>
                     <option>0</option>
                     <option>1</option>
                     <option>2</option>
+                    <option>3</option>
                   </select>
                   <span class="select-arrow"></span>
                 </div>
@@ -93,6 +97,7 @@
                 <div class="form-group">
                   <span class="form-label">Travel class</span>
                   <select ngModel name="flightClass" class="form-control" required>
+                    <option value="" disabled selected hidden>Choose your class</option>
                     <option value="ECONOMY_CLASS">Economy class</option>
                     <option value="BUSINESS_CLASS">Business class</option>
                     <option value="FIRST_CLASS">First class</option>
