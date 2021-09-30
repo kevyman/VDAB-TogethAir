@@ -19,8 +19,16 @@ body {
 .card {
   border-radius: 8px;
   overflow: hidden;
-  margin-top: 50px;
+  transition: all 0.2s ease;
+  cursor: pointer
+  /*margin-top: 50px;*/
 }
+
+.card:hover{
+  box-shadow: 5px 6px 6px 2px #e9ecef;
+  transform: scale(1.1)
+}
+
 .card .card__img-wrap {
   height: 150px;
   width: 100%;
