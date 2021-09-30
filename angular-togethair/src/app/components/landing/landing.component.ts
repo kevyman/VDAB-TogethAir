@@ -5,11 +5,13 @@ import { Airport } from "../../models/airport";
 import { NgForm } from "@angular/forms";
 import { FlightService } from "../../services/flight.service";
 import { Flight } from "../../models/flight";
-import{DataService} from "../../services/data.service";
+import{ DataService } from "../../services/data.service";
+import { Airline } from "../../models/airline";
 
 import { Subscription } from "rxjs";
 import { Router } from '@angular/router';
 import {AuthService} from "@auth0/auth0-angular";
+import { AirlineService } from 'src/app/services/airline.service';
 
 
 @Component({
@@ -24,6 +26,7 @@ export class LandingComponent implements OnInit {
   arrivalAirports!: Airport[];
   options: Boolean = true;
   newFlight !: Flight;
+  airlines: Airline[] =[];
 
 
   public airportPair: string="";
@@ -34,12 +37,14 @@ export class LandingComponent implements OnInit {
     private dataService: DataService,
     private flightService: FlightService,
     private router: Router,
-    public  auth: AuthService
+    public  auth: AuthService,
+    private airlineService: AirlineService
               ) { }
 
 
   ngOnInit(): void {
     this.getAirports();
+    this.getAirlines();
     this.subscription = this.dataService.airportPair.subscribe(airportPair => this.airportPair = airportPair);
 
   }
@@ -54,6 +59,18 @@ export class LandingComponent implements OnInit {
     this.airportService.getAirports().subscribe(
       (response: Airport[]) => {
         this.airports = response;
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public getAirlines(): void{
+    this.airlineService.getAirlines().subscribe(
+      (response: Airline[]) => {
+        this.airlines = response;
+        // console.log(this.airlines);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -82,9 +99,9 @@ export class LandingComponent implements OnInit {
       this.arrivalAirports = results.slice(0, 10);
     }
 
-    console.log("Departure List: " + JSON.stringify(this.departAirports));
+  //  console.log("Departure List: " + JSON.stringify(this.departAirports));
 
-    console.log("Arrival List: " + JSON.stringify(this.arrivalAirports));
+  //  console.log("Arrival List: " + JSON.stringify(this.arrivalAirports));
 
 
     if (results.length == 0 || !event.target.value) {
@@ -110,6 +127,13 @@ export class LandingComponent implements OnInit {
     this.newFlight.flightDuration = this.calculateDuration(this.newFlight.departureAirport, this.newFlight.destinationAirport);
 
     this.newFlight.price=this.priceCalculation(this.newFlight.destinationAirport,this.newFlight.departureAirport);
+
+
+    let tempIndex = Math.floor(Math.random() * (this.airlines.length));
+  //  console.log("TempIndex: " + tempIndex);
+    let tempAirline = this.airlines[tempIndex];
+  //  console.log("TempAirline: " + JSON.stringify(tempAirline));
+    this.newFlight.airline = tempAirline;
 
     this.dataService.changeMessage(this.newFlight.departureAirport.name + "/" + this.newFlight.destinationAirport.name);
 

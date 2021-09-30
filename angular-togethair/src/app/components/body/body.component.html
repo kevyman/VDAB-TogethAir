@@ -144,7 +144,7 @@
     <div class="col-sm-6 col-md-3 col-xs-12" *ngFor="let flight of filteredFlights">
       <article class="card card-big mb15">
         <div class="card__img-wrap">
-          <img class="coverPhoto" src="https://tse4.mm.bing.net/th?id=OIP.FtkZJVw4ND071rsucFu-hQHaDn&pid=Api">
+          <img class="coverPhoto" src="assets/cover.jpg">
           <h4 class="title title-overlay-center">Explore {{flight.destinationAirport.cityName}}</h4>
         </div>
         <div class="card__info">
@@ -154,7 +154,7 @@
         </div> <!--  card__info //  -->
         <div class="card__pricelist">
           <div class="cost">
-            <div class="logo-wrap"><img src="https://tse3.mm.bing.net/th?id=OIP.ev1T03ny_3iC3xALrAecFAHaHa&pid=Api"></div>
+            <div class="logo-wrap"><img src={{flight.airline.imageUrl}}></div>
             <div class="icon-wrap">{{flight.flightDuration}}h00 <br> <div class="small">{{flight.departureTime}}</div> </div>
             <div class="price-wrap"><var class="price"><span class="currency">EUR</span><br>{{flight.price}}</var>
               <a rel="nofollow" target="_blank" href="" class="small">Book</a></div>
