@@ -1,83 +1,80 @@
 <div class="container main">
-    <div class="row">
-        <div class="col-xs-12">
-            <!-- Button trigger modal -->
-<!--            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
-<!--                Add New Flight-->
-<!--            </button>-->
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- Button trigger modal -->
+      <!--            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
+      <!--                Add New Flight-->
+      <!--            </button>-->
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add Flight</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form #addForm="ngForm" (ngSubmit)="onAddFlight(addForm)">
-                                <div class="mb-3">
-                                    <label for="departureAirport" class="form-label">Departure Airport</label>
-                                    <input type="text" ngModel name="departureAirport" class="form-control"
-                                        id="departureAirport" placeholder="e.g. Brussels" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="destinationAirport" class="form-label">Destination Airport</label>
-                                    <input type="text" ngModel name="destinationAirport" class="form-control"
-                                        id="destinationAirport" placeholder="e.g. New York" required>
-                                </div>
-                                <div class="mb-3">
-
-                                    <label for="departureTime" class="form-label">Departure Time</label>
-                                    <input type="datetime-local" ngModel name="departureTime" class="form-control" id="departureTime"
-                                         required>
-                                </div>
-                                <div class="mb-3">
-
-                                    <label for="destinationTime" class="form-label">Destination Time</label>
-                                    <input type="datetime-local" ngModel name="destinationTime" class="form-control" id="destinationTime"
-                                         required>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="flightDuration" class="form-label">Flight Duration in minutes</label>
-                                    <input type="number" ngModel name="flightDuration" class="form-control" id="flightDuration"
-                                        placeholder="12" required>
-                                </div>
-
-
-                                <div class="mb-3">
-                                    <label for="price" class="form-label">Price</label>
-                                    <input type="number" ngModel name="price" class="form-control" id="price" placeholder="12" required>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                                        id="addFlightCloseBtn">Close</button>
-                                    <button [disabled]="addForm.invalid" type="submit"
-                                        class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-
-                    </div>
-                </div>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add Flight</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <div class="modal-body">
+              <form #addForm="ngForm" (ngSubmit)="onAddFlight(addForm)">
+                <div class="mb-3">
+                  <label for="departureAirport" class="form-label">Departure Airport</label>
+                  <input type="text" ngModel name="departureAirport" class="form-control" id="departureAirport"
+                    placeholder="e.g. Brussels" required>
+                </div>
+                <div class="mb-3">
+                  <label for="destinationAirport" class="form-label">Destination Airport</label>
+                  <input type="text" ngModel name="destinationAirport" class="form-control" id="destinationAirport"
+                    placeholder="e.g. New York" required>
+                </div>
+                <div class="mb-3">
+
+                  <label for="departureTime" class="form-label">Departure Time</label>
+                  <input type="datetime-local" ngModel name="departureTime" class="form-control" id="departureTime"
+                    required>
+                </div>
+                <div class="mb-3">
+
+                  <label for="destinationTime" class="form-label">Destination Time</label>
+                  <input type="datetime-local" ngModel name="destinationTime" class="form-control" id="destinationTime"
+                    required>
+                </div>
+
+                <div class="mb-3">
+                  <label for="flightDuration" class="form-label">Flight Duration in minutes</label>
+                  <input type="number" ngModel name="flightDuration" class="form-control" id="flightDuration"
+                    placeholder="12" required>
+                </div>
+
+
+                <div class="mb-3">
+                  <label for="price" class="form-label">Price</label>
+                  <input type="number" ngModel name="price" class="form-control" id="price" placeholder="12" required>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                    id="addFlightCloseBtn">Close</button>
+                  <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
 <div class="container main2">
   <div class="row">
     <div class="col-xs-12">
       <!-- Button trigger modal -->
-<!--      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#example2Modal">-->
-<!--        Add New User-->
-<!--      </button>-->
+      <!--      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#example2Modal">-->
+      <!--        Add New User-->
+      <!--      </button>-->
 
       <!-- Modal -->
-      <div class="modal fade" id="example2Modal" tabindex="-1" aria-labelledby="exampleModalLabel"
-           aria-hidden="true">
+      <div class="modal fade" id="example2Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -88,46 +85,41 @@
               <form #addFormPerson="ngForm" (ngSubmit)="onAddPerson(addFormPerson)">
                 <div class="mb-3">
                   <label for="name" class="form-label">Name</label>
-                  <input type="text" ngModel name="name" class="form-control"
-                         id="name" placeholder="e.g. Joe" required>
+                  <input type="text" ngModel name="name" class="form-control" id="name" placeholder="e.g. Joe" required>
                 </div>
                 <div class="mb-3">
                   <label for="surname" class="form-label">Surname</label>
-                  <input type="text" ngModel name="surname" class="form-control"
-                         id="surname" placeholder="e.g. Smith" required>
+                  <input type="text" ngModel name="surname" class="form-control" id="surname" placeholder="e.g. Smith"
+                    required>
                 </div>
                 <div class="mb-3">
 
                   <label for="age" class="form-label">Age</label>
-                  <input type="number" ngModel name="age" class="form-control" id="age"
-                         placeholder="27"
-                         required>
+                  <input type="number" ngModel name="age" class="form-control" id="age" placeholder="27" required>
                 </div>
                 <div class="mb-3">
 
                   <label for="emailAddress" class="form-label">Email Address</label>
                   <input type="email" ngModel name="emailAddress" class="form-control" id="emailAddress"
-                         placeholder="example@example.com"
-                         required>
+                    placeholder="example@example.com" required>
                 </div>
 
                 <div class="mb-3">
                   <label for="password" class="form-label">Choose password</label>
                   <input type="password" ngModel name="password" class="form-control" id="password"
-                         placeholder="*********" required>
+                    placeholder="*********" required>
                 </div>
 
 
-                  <select class="form-control" ngModel name="role" required>
+                <select class="form-control" ngModel name="role" required>
 
-                    <option [ngValue]="role"  *ngFor="let role of roles">{{role}}</option>
-                  </select>
+                  <option [ngValue]="role" *ngFor="let role of roles">{{role}}</option>
+                </select>
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                          id="addUserCloseBtn">Close</button>
-                  <button [disabled]="addFormPerson.invalid" type="submit"
-                          class="btn btn-primary">Submit</button>
+                    id="addUserCloseBtn">Close</button>
+                  <button [disabled]="addFormPerson.invalid" type="submit" class="btn btn-primary">Submit</button>
                 </div>
               </form>
             </div>
@@ -148,20 +140,31 @@
           <h4 class="title title-overlay-center">Explore {{flight.destinationAirport.cityName}}</h4>
         </div>
         <div class="card__info">
-          <div class="title-left-wrap"> <h5>{{flight.departureAirport.cityName}}</h5> <small>{{flight.departureAirport.code}}</small></div>
+          <div class="title-left-wrap">
+            <h5>{{flight.departureAirport.cityName}}</h5> <small>{{flight.departureAirport.code}}</small>
+          </div>
           <span class="icon-center-wrap"><img src="assets/globe.svg"></span>
-          <div class="title-right-wrap"> <h5>{{flight.destinationAirport.cityName}}</h5> <small>{{flight.destinationAirport.code}} </small></div>
+          <div class="title-right-wrap">
+            <h5>{{flight.destinationAirport.cityName}}</h5> <small>{{flight.destinationAirport.code}} </small>
+          </div>
         </div> <!--  card__info //  -->
         <div class="card__pricelist">
           <div class="cost">
             <div class="logo-wrap"><img src={{flight.airline.imageUrl}}></div>
-            <div class="icon-wrap">{{flight.flightDuration}}h00 <br> <div class="small">{{flight.departureTime}}</div> </div>
-            <div class="price-wrap"><var class="price"><span class="currency">EUR</span><br>{{flight.price}}</var>
-              <a rel="nofollow" target="_blank" href="" class="small">Book</a></div>
+            <div class="icon-wrap">{{flight.flightDuration}}h00 <br>
+              <div class="small">{{flight.departureTime}}</div>
+            </div>
+            <div class="price-wrap"><var class="price"><span class="currency">EUR</span><br>
+                <div *ngIf="flight.roundtrip;else roundtripFalse">
+                  {{flight.price*2}}
+                </div>
+                <ng-template #roundtripFalse>{{flight.price}}</ng-template>
+              </var>
+              <a rel="nofollow" target="_blank" href="" class="small">Book</a>
+            </div>
           </div><!--  cost //  -->
         </div> <!-- card__pricelist // -->
       </article> <!-- card // -->
     </div><!-- col // -->
+  </div>
 </div>
-</div>
-
