@@ -119,43 +119,44 @@ export class LandingComponent implements OnInit {
     let randFlightNum = Math.floor(Math.random() * 4) + 3;
 
     for (let i = 0; i < randFlightNum; i++) {
+      console.log(JSON.stringify(formData));
+
       let tempFlight = this.buildFlight(formData);
 
       this.flightService.addFlight(tempFlight).subscribe(
         (response: Flight) => {
           console.log(response);
+          if(i==randFlightNum-1){
+            this.dataService.changeMessage(tempFlight.departureAirport.name + "/" + tempFlight.destinationAirport.name);
+            form.reset();
+            this.router.navigate(['/general']);
+
+          }
         },
         (error: HttpErrorResponse) => {
           alert(error.message);
         }
       );
     }
-
-    let newFlight = this.buildFlight(formData);
-
-    this.dataService.changeMessage(newFlight.departureAirport.name + "/" + newFlight.destinationAirport.name);
-
-    this.flightService.addFlight(newFlight).subscribe(
-      (response: Flight) => {
-        console.log(response);
-        form.reset();
-        this.router.navigate(['/general'])
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-
-      }
-
-    );
   }
 
   public buildFlight(inputFlight: Flight): Flight {
 
     let tempFlight: Flight = inputFlight;
 
-    tempFlight.departureAirport = this.findAirportByName(String(inputFlight.departureAirport));
-
-    tempFlight.destinationAirport = this.findAirportByName(String(inputFlight.destinationAirport));
+    if(typeof inputFlight.departureAirport === 'string'){
+      console.log("Typeof worked");
+      tempFlight.departureAirport = this.findAirportByName(String(inputFlight.departureAirport));
+    }else{
+      tempFlight.departureAirport = inputFlight.departureAirport;
+    }
+    
+    if(typeof inputFlight.destinationAirport === 'string'){
+      console.log("Typeof worked");
+      tempFlight.destinationAirport = this.findAirportByName(String(inputFlight.destinationAirport));
+    }else{
+      tempFlight.destinationAirport = inputFlight.destinationAirport;
+    }
 
     tempFlight.flightDuration = this.calculateDuration(tempFlight.departureAirport, tempFlight.destinationAirport);
 
