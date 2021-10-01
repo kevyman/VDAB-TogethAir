@@ -3,11 +3,11 @@ import {Airline} from "./airline";
 
 
 export interface Flight{
-  id: number;
+  id?: number;
   departureAirport: Airport;
   destinationAirport: Airport;
   departureTime: Date;
-  destinationTime: Date;
+  destinationTime?: Date;
   flightDuration: number;
   price: number;
   flightClass : string;
