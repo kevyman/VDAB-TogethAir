@@ -145,14 +145,12 @@ export class LandingComponent implements OnInit {
     let tempFlight: Flight = inputFlight;
 
     if(typeof inputFlight.departureAirport === 'string'){
-      console.log("Typeof worked");
       tempFlight.departureAirport = this.findAirportByName(String(inputFlight.departureAirport));
     }else{
       tempFlight.departureAirport = inputFlight.departureAirport;
     }
     
     if(typeof inputFlight.destinationAirport === 'string'){
-      console.log("Typeof worked");
       tempFlight.destinationAirport = this.findAirportByName(String(inputFlight.destinationAirport));
     }else{
       tempFlight.destinationAirport = inputFlight.destinationAirport;
