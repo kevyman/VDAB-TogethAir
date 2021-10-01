@@ -154,12 +154,7 @@
             <div class="icon-wrap">{{flight.flightDuration}}h00 <br>
               <div class="small">{{flight.departureTime}}</div>
             </div>
-            <div class="price-wrap"><var class="price"><span class="currency">EUR</span><br>
-                <div *ngIf="flight.roundtrip;else roundtripFalse">
-                  {{flight.price*2}}
-                </div>
-                <ng-template #roundtripFalse>{{flight.price}}</ng-template>
-              </var>
+            <div class="price-wrap"><var class="price"><span class="currency">EUR</span><br>{{flight.price}}</var>
               <a rel="nofollow" target="_blank" href="" class="small">Book</a>
             </div>
           </div><!--  cost //  -->
