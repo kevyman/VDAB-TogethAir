@@ -1,10 +1,10 @@
 <div id="booking" class="section">
-  <img class="logoHeader" src="assets/tgAir.png" alt="logo">
-  <a style="margin-right: 50px" class="navbar-brand title" href="#">TogethAir</a>
-  <app-login-button *ngIf="(auth.isAuthenticated$ | async) == false">
-  </app-login-button>
-  <app-logout-button *ngIf="auth.isAuthenticated$ | async">
-  </app-logout-button>
+  <img class="logoHeader" src="assets/tgAir-newcolorbrandname.png" alt="logo" href="#">
+<!--  <a style="margin-right: 50px" class="navbar-brand title" >TogethAir</a>-->
+<!--  <app-login-button *ngIf="(auth.isAuthenticated$ | async) == false">-->
+<!--  </app-login-button>-->
+<!--  <app-logout-button *ngIf="auth.isAuthenticated$ | async">-->
+<!--  </app-logout-button>-->
   <div class="section-center">
     <div class="container">
       <div class="row">
@@ -22,8 +22,17 @@
                          (change)="options=false">
                   <span></span>One way
                 </label>
+
+                <div class="btn">
+                  <app-login-button *ngIf="(auth.isAuthenticated$ | async) == false" ></app-login-button>
+                  </div>
+                <div>
+                  <app-logout-button *ngIf="auth.isAuthenticated$ | async" ></app-logout-button>
+                </div>
               </div>
             </div>
+
+
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
