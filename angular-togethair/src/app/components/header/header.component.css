@@ -1,6 +1,5 @@
 .logoHeader{
-    width: 110px;
-    height: 87.969px;
+    height:150px;
 
 }
 .title{
@@ -20,9 +19,26 @@
 
 .addButtonFlight{
   margin-right: 500px;
+  background-color: #5e2ced;
 }
 
 .addButtonUser{
   margin-right: 499px;
+  background-color: #5e2ced;
 }
 
+.navbar-toggler-icon{
+  overflow: visible !important;
+  position: fixed !important;
+  color: black !important;
+  z-index: -1;
+}
+.dropdown-menu{
+  overflow: visible !important;
+  position: fixed !important;
+  color: black !important;
+  z-index: -1;
+}
+.navbar-inner {
+  background-color:transparent;
+}
