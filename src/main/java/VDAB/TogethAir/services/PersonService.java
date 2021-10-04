@@ -10,6 +10,7 @@ import javax.transaction.Transactional;
 @Service
 @AllArgsConstructor
 public class PersonService {
+
     private final PersonRepository personRepository;
 
     public Person addPerson(Person person){
@@ -30,4 +31,10 @@ public class PersonService {
         personRepository.deleteById(id);
     }
 
+
+    public Person findPersonByEmailAddress(String emailAddress){
+       Person person = personRepository.findPersonByEmailAddress(emailAddress);
+        System.out.println(person.getEmailAddress());
+        return person;
+    }
 }

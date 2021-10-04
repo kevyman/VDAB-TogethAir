@@ -6,7 +6,7 @@ import {FlightService} from 'src/app/services/flight.service';
 import {PersonService} from "../../services/person.service";
 import {Person} from "../../models/person";
 import{DataService} from "../../services/data.service";
-import { Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {AuthService} from "@auth0/auth0-angular";
 import {Router} from "@angular/router";
 
@@ -51,6 +51,16 @@ export class BodyComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void{
+    this.personService.findPersonByEmailAddress("tototonique@gmail.com").subscribe((response: Person) => {
+        console.log(response);
+        this.person = response;
+        console.log(this.person)
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      });
+
+    console.log()
     this.tempFunc().subscribe(userObj =>
       this.userObj = userObj
     );
@@ -65,6 +75,8 @@ export class BodyComponent implements OnInit, OnDestroy {
   }
 
    bookFlightSaveUser():void {
+     this.tempFunc().subscribe(userObj => this.userObj = userObj);
+
      console.log(this.userObj);
      this.person.emailAddress = this.userObj.email;
      this.person.role = "CLIENT";
@@ -72,7 +84,7 @@ export class BodyComponent implements OnInit, OnDestroy {
      this.personService.addPerson(this.person).subscribe(
        (response: Person) => {
          console.log(response);
-         this.router.navigate(['/bookingPage/{flightId}']);
+         // this.router.navigate(['/bookingPage/{flightId}']);
 
        },
        (error: HttpErrorResponse) => {
