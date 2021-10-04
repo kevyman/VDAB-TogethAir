@@ -11,30 +11,30 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 public class PersonController {
 
-    private PersonService personsService;
+    private PersonService personService;
 
 
     @GetMapping("/findPerson/{id}")
     public ResponseEntity<Person> findPersonById(Long id) throws Exception {
-        Person person = personsService.findPersonById(id);
+        Person person = personService.findPersonById(id);
         return new ResponseEntity<>(person , HttpStatus.OK);
     }
 
     @PostMapping("/addPerson")
     public ResponseEntity<Person> addPerson(@RequestBody Person person){
-        Person newPerson = personsService.addPerson(person);
+        Person newPerson = personService.addPerson(person);
         return new ResponseEntity<>(newPerson , HttpStatus.OK);
     }
 
     @PutMapping("/updatePerson")
     public ResponseEntity<Person> updatePerson(@RequestBody Person person){
-        Person updatePerson = personsService.updatePerson(person);
+        Person updatePerson = personService.updatePerson(person);
         return new ResponseEntity<>(updatePerson , HttpStatus.OK);
     }
 
     @DeleteMapping("/deletePerson/{id}")
     public ResponseEntity<?>  deletePerson(@PathVariable("id") Long id) {
-        personsService.deletePerson(id);
+        personService.deletePerson(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }
