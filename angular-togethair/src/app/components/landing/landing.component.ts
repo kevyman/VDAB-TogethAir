@@ -27,7 +27,6 @@ export class LandingComponent implements OnInit {
   options: Boolean = true;
   airlines: Airline[] = [];
 
-
   public airportPair: string = "";
 
   public subscription!: Subscription;
@@ -45,7 +44,6 @@ export class LandingComponent implements OnInit {
     this.getAirports();
     this.getAirlines();
     this.subscription = this.dataService.airportPair.subscribe(airportPair => this.airportPair = airportPair);
-
   }
 
   ngOnDestroy(): void {
@@ -149,7 +147,7 @@ export class LandingComponent implements OnInit {
     }else{
       tempFlight.departureAirport = inputFlight.departureAirport;
     }
-    
+
     if(typeof inputFlight.destinationAirport === 'string'){
       tempFlight.destinationAirport = this.findAirportByName(String(inputFlight.destinationAirport));
     }else{
