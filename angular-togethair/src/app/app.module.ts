@@ -17,6 +17,8 @@ import { LoginButtonComponent } from './components/login-button/login-button.com
 import { LogoutButtonComponent } from './components/logout-button/logout-button.component';
 import { ProfileComponent } from './components/pages/profile/profile.component';
 import { AddButtonsComponent } from './components/add-buttons/add-buttons.component';
+import { CartComponent } from './components/cart/cart.component';
+
 
 
 
@@ -31,7 +33,8 @@ import { AddButtonsComponent } from './components/add-buttons/add-buttons.compon
     LoginButtonComponent,
     LogoutButtonComponent,
     ProfileComponent,
-    AddButtonsComponent
+    AddButtonsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
