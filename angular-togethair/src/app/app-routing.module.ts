@@ -18,10 +18,10 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [AuthGuard]
   },
-  {
-    path: 'bookingPage',
-    canActivate: [AuthGuard]
-  }
+  // {
+  //   path: 'bookingPage',
+  //   canActivate: [AuthGuard]
+  // }
 
 
 
