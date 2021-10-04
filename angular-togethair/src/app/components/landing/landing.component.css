@@ -133,7 +133,7 @@
 	width: 0px;
 	height: 0px;
 	border-radius: 50%;
-	background-color: #1328c0 ;
+	background-color: #5e2ced ;
 	-webkit-transition: 0.2s all;
 	transition: 0.2s all;
 	-webkit-transform: translate(-50%, -50%);
@@ -156,7 +156,7 @@
 
 .booking-form .submit-btn {
 	color: #fff;
-  background-color: #1328c0;
+  background-color: #5e2ced;
 	font-weight: 400;
 	height: 50px;
 	font-size: 14px;
@@ -174,8 +174,8 @@
 }
 
 .logoHeader{
-  width: 130px;
-  height: 95px;
+  height: 150px;
+  position: center;
 }
 
 .title{
@@ -184,7 +184,7 @@
   font-family: 'Josefin Sans', sans-serif;
   font-size: 22px;
   padding-top: 8px;
-  color: #1328c0;
+  color: #5e2ced;
 
 }
 

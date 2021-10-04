@@ -6,15 +6,36 @@
 
 <nav class="navbar navbar-light bg-light fixed-top navbarr">
   <div class="container-fluid">
-    <img class="logoHeader" src="assets/tgAir.png" alt="logo">
-    <a class="navbar-brand title" href="#">TogethAir</a>
+    <img class="logoHeader" src="assets/tgAir-newcolorbrandname.png" alt="logo" href="#">
+
 
     <app-add-buttons></app-add-buttons>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-      aria-controls="offcanvasNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<!--    <div>-->
+<!--    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"-->
+<!--      aria-controls="offcanvasNavbar">-->
+<!--      <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+<!--  </div>-->
+
+    <nav class="navbar" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+         aria-controls="offcanvasNavbar">
+      <div class="container-fluid">
+        <button class="navbar-toggler ms-auto" type="button" data-mdb-toggle="collapse"
+                data-mdb-target="#navbarToggleExternalContent3" aria-controls="navbarToggleExternalContent3"
+                aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+<!--    <div class="collapse" id="navbarToggleExternalContent3">-->
+<!--      <div class="bg-light">-->
+<!--        <button class="btn btn-link btn-block border-bottom m-0">Link 1</button>-->
+<!--        <button class="btn btn-link btn-block border-bottom m-0">Link 2</button>-->
+<!--        <button class="btn btn-link btn-block m-0">Link 3</button>-->
+<!--      </div>-->
+<!--    </div>-->
+
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">TogethAir</h5>
