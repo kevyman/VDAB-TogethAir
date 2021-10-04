@@ -28,5 +28,10 @@ export class PersonService{
     public deletePerson(id: number): Observable<void>{
         return this.http.delete<void>(`${this.apiServerUrl}/deletePerson/${id}`)
     }
+
+    public findPersonByEmailAddress(emailAddress : string): Observable<Person>{
+      return this.http.get<Person>(`${this.apiServerUrl}/findByEmail/${emailAddress}`)
+    }
+
 }
 

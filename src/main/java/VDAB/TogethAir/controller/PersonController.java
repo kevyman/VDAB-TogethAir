@@ -37,4 +37,11 @@ public class PersonController {
         personService.deletePerson(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @GetMapping("/findByEmail/{emailAddress}")
+    public ResponseEntity<Person> findPersonByEmail(@PathVariable("emailAddress") String emailAddress) throws Exception {
+        Person person = personService.findPersonByEmailAddress(emailAddress);
+        return new ResponseEntity<>(person , HttpStatus.OK);
+    }
+
 }
