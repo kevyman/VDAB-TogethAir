@@ -19,20 +19,8 @@ public class Person implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false , length = 100)
-    private String name;
-
-    @Column(nullable = false , length = 100)
-    private String surname;
-
-    @Column(nullable = false , length = 100)
-    private Integer age;
-
-    @Column(nullable = false , length = 100)
+    @Column(nullable = false , length = 100, unique = true)
     private String emailAddress;
-
-    @Column(nullable = false , length = 100)
-    private String password;
 
     @Enumerated(EnumType.STRING)
     private UserRole role;
