@@ -16,8 +16,9 @@ export class PersonService{
         return this.http.get<Person>(`${this.apiServerUrl}/findPerson/${id}`)
     }
 
-    public addPerson(person: Person): Observable<Person>{
-        return this.http.post<Person>(`${this.apiServerUrl}/addPerson`, person)
+    public addPerson(person : Person): Observable<Person>{
+      console.log("got here")
+      return this.http.post<Person>(`${this.apiServerUrl}/addPerson`, person)
     }
 
     public updatePerson(person: Person): Observable<Person>{
@@ -27,5 +28,10 @@ export class PersonService{
     public deletePerson(id: number): Observable<void>{
         return this.http.delete<void>(`${this.apiServerUrl}/deletePerson/${id}`)
     }
+
+    public findPersonByEmailAddress(emailAddress : string): Observable<Person>{
+      return this.http.get<Person>(`${this.apiServerUrl}/findByEmail/${emailAddress}`)
+    }
+
 }
 
