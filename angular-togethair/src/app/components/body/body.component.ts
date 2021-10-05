@@ -36,6 +36,8 @@ export class BodyComponent implements OnInit, OnDestroy {
 
 
 
+
+
   public roles: string[] = ["ADMIN" , "TOGETHAIR_EMPLOYEE"  , "AIRLINE_EMPLOYEE" , "CLIENT"];
 
 
@@ -51,14 +53,14 @@ export class BodyComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void{
-    this.personService.findPersonByEmailAddress("tototonique@gmail.com").subscribe((response: Person) => {
-        console.log(response);
-        this.person = response;
-        console.log(this.person)
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      });
+    // this.personService.findPersonByEmailAddress("tototonique@gmail.com").subscribe((response: Person) => {
+    //     console.log(response);
+    //     this.person = response;
+    //     console.log(this.person)
+    //   },
+    //   (error: HttpErrorResponse) => {
+    //     alert(error.message);
+    //   });
 
     console.log()
     this.tempFunc().subscribe(userObj =>
