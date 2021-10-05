@@ -135,7 +135,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-md-3 col-xs-12" *ngFor="let flight of filteredFlights">
-      <article class="card card-big mb15">
+      <article class="card card-big mb15" (click)="bookFlightSaveUser(flight)" data-bs-toggle="modal" data-bs-target="#checkoutModal">
         <div class="card__img-wrap">
           <img class="coverPhoto" src="assets/cover.jpg">
           <h4 class="title title-overlay-center">Explore {{flight.destinationAirport.cityName}}</h4>
@@ -161,7 +161,7 @@
               <div class="small">{{flight.destinationTime | date:'short'}}</div>
             </div>
             <div class="price-wrap"><var class="price"><span class="currency">EUR</span><br>{{flight.price}}</var>
-              <a rel="nofollow" (click)="bookFlightSaveUser()" class="small">Book</a>
+              <a rel="nofollow" class="small">Book</a>
             </div>
           </div><!--  cost //  -->
         </div> <!-- card__pricelist // -->
@@ -169,3 +169,5 @@
     </div><!-- col // -->
   </div>
 </div>
+
+<app-cart [bookFlight]= "bookFlight"></app-cart>

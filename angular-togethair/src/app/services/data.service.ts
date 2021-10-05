@@ -6,7 +6,7 @@ export class DataService {
 
 
 
-  public airportPair = new BehaviorSubject('default message');
+  public airportPair = new BehaviorSubject('Antwerp Brussels North/Barcelona Arpt');
     currentMessage = this.airportPair.asObservable();
 
   constructor() {}
