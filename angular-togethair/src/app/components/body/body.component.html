@@ -158,7 +158,7 @@
               <div class="small">{{flight.destinationTime | date:'short'}}</div>
             </div>
             <div class="price-wrap"><var class="price"><span class="currency">EUR</span><br>{{flight.price}}</var>
-              <a rel="nofollow" target="_blank" href="" class="small">Book</a>
+              <a rel="nofollow" (click)="bookFlightSaveUser()" class="small">Book</a>
             </div>
           </div><!--  cost //  -->
         </div> <!-- card__pricelist // -->

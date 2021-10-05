@@ -88,8 +88,6 @@ export class LandingComponent implements OnInit {
         results.push(airport);
       }
     }
-
-
     if (box == "departure") {
       this.departAirports = results.slice(0, 10);
     } else {

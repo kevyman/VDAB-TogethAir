@@ -4,7 +4,6 @@ import { LandingComponent } from './components/landing/landing.component';
 import {GeneralComponent} from "./components/general/general.component";
 import {ProfileComponent} from "./components/pages/profile/profile.component";
 import {AuthGuard} from "@auth0/auth0-angular";
-import {AddButtonsComponent} from "./components/add-buttons/add-buttons.component";
 
 const routes: Routes = [
   {
@@ -12,13 +11,17 @@ const routes: Routes = [
     component:LandingComponent},
   {
     path:'general',
-    component:GeneralComponent
+    component:GeneralComponent,
   },
   {
     path: 'profile',
     component: ProfileComponent,
     canActivate: [AuthGuard]
-  }
+  },
+  // {
+  //   path: 'bookingPage',
+  //   canActivate: [AuthGuard]
+  // }
 
 
 

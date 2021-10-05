@@ -6,7 +6,9 @@ import {FlightService} from 'src/app/services/flight.service';
 import {PersonService} from "../../services/person.service";
 import {Person} from "../../models/person";
 import{DataService} from "../../services/data.service";
-import {Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
+import {AuthService} from "@auth0/auth0-angular";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-body',
@@ -14,6 +16,7 @@ import {Subscription} from "rxjs";
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit, OnDestroy {
+
   public flights!: Flight[];
 
   public filteredFlights: Flight[]=[];
@@ -26,33 +29,77 @@ export class BodyComponent implements OnInit, OnDestroy {
 
   public departureAirport!: string;
 
+  public userObj !: any;
+
+  public person : Person = {emailAddress: "", role: ""};
+
+
 
 
   public roles: string[] = ["ADMIN" , "TOGETHAIR_EMPLOYEE"  , "AIRLINE_EMPLOYEE" , "CLIENT"];
 
 
   // public values:string[] = Object.keys(Role).map(key => Role[key]).filter(k => !(parseInt(k) >= 0))
+  private profileJson!: string;
 
   constructor(private flightService: FlightService,
               private personService: PersonService,
-              private dataService: DataService) {
+              private dataService: DataService,
+              private auth: AuthService,
+              private router: Router) {
   }
 
 
-  ngOnInit(): void {
+  ngOnInit(): void{
+    this.personService.findPersonByEmailAddress("tototonique@gmail.com").subscribe((response: Person) => {
+        console.log(response);
+        this.person = response;
+        console.log(this.person)
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      });
+
+    console.log()
+    this.tempFunc().subscribe(userObj =>
+      this.userObj = userObj
+    );
+    this.personService.addPerson(this.person);
     this.subscription = this.dataService.airportPair.subscribe(airportPair => this.airportPair = airportPair);
     console.log(this.airportPair);
     const array = this.airportPair.split("/");
-    console.log(array)
+    console.log(array);
     this.destinationAirport = array[1];
     this.departureAirport = array[0];
     this.getFlights();
+  }
 
+   bookFlightSaveUser():void {
+     this.tempFunc().subscribe(userObj => this.userObj = userObj);
+
+     console.log(this.userObj);
+     this.person.emailAddress = this.userObj.email;
+     this.person.role = "CLIENT";
+     console.log(this.person);
+     this.personService.addPerson(this.person).subscribe(
+       (response: Person) => {
+         console.log(response);
+         // this.router.navigate(['/bookingPage/{flightId}']);
+
+       },
+       (error: HttpErrorResponse) => {
+         alert(error.message);
+       });
+   }
+
+
+  tempFunc(){
+    return this.auth.user$;
   }
 
 
- ngOnDestroy(): void{
 
+  ngOnDestroy(): void{
   this.subscription.unsubscribe();
  }
 
@@ -103,7 +150,4 @@ export class BodyComponent implements OnInit, OnDestroy {
       }
     );
   }
-
-
-
 }
