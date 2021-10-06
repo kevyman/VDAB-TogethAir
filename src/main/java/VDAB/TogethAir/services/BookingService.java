@@ -1,6 +1,7 @@
 package VDAB.TogethAir.services;
 
 import VDAB.TogethAir.model.Booking;
+import VDAB.TogethAir.model.user.Person;
 import VDAB.TogethAir.repository.BookingRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -35,4 +36,9 @@ public class BookingService {
     public List<Booking> findBookings() {
         return bookingRepository.findAll();
     }
+
+    public List<Booking> findBookingsByPerson(Person person){
+        return findBookingsByPerson(person);
+    }
+
 }
