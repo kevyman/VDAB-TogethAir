@@ -4,6 +4,7 @@ import {DOCUMENT} from "@angular/common";
 import {PersonService} from "../../services/person.service";
 import {Person} from "../../models/person";
 import {HttpErrorResponse} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -12,32 +13,31 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class HeaderComponent implements OnInit {
 
-  public userObj : any = this.auth.user$.subscribe(userObj => this.userObj = userObj);
+  private userObj: any;
   public person: Person = {emailAddress: "", role: ""};
 
   constructor(public auth: AuthService,
-              @Inject(DOCUMENT) private doc : Document,
-              private personService:PersonService) { }
+              @Inject(DOCUMENT) private doc: Document,
+              private personService: PersonService) {
+  }
 
 
   ngOnInit(): void {
-    if (this.userObj?.email) {
-      this.personService.findPersonByEmailAddress(this.userObj.email).subscribe(person => {
-      this.person = person;
-      console.log(this.person.role);
-     });
-    }
+    this.auth.user$.subscribe(userObj => {
+      this.userObj = userObj
+      if (userObj) {
+        this.personService.findPersonByEmailAddress(this.userObj.email).subscribe(person => {
+          this.person = person;
+        });
+      }
+    });
   }
 
-  logout():void{
-    this.auth.logout({returnTo: this.doc.location.origin})
+  logout(): void {
+    this.auth.logout()
   }
 
-  loginWithRedirect():void{
+  loginWithRedirect(): void {
     this.auth.loginWithRedirect();
-  }
-
-  private tempFunc() {
-    return this.auth.user$;
   }
 }
