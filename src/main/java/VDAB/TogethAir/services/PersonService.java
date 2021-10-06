@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -32,9 +33,8 @@ public class PersonService {
     }
 
 
-    public Person findPersonByEmailAddress(String emailAddress){
-       Person person = personRepository.findPersonByEmailAddress(emailAddress);
-        System.out.println(person.getEmailAddress());
-        return person;
+    public Optional<Person> findPersonByEmailAddress(String emailAddress){
+       return personRepository.findPersonByEmailAddress(emailAddress);
+
     }
 }
