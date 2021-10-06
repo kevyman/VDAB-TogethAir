@@ -37,4 +37,9 @@ public class PersonService {
        return personRepository.findPersonByEmailAddress(emailAddress);
 
     }
+
+    public String findRoleByEmailAddress(String email) {
+        return personRepository.findRoleByEmailAddress(email);
+    }
+
 }

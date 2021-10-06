@@ -46,4 +46,10 @@ public class PersonController {
         return new ResponseEntity<>(person.orElse(null), HttpStatus.OK);
     }
 
+    @GetMapping("/findRole/{email}")
+    public ResponseEntity<String> findRoleByEmail(@PathVariable("email") String email) throws Exception {
+        String role= personService.findRoleByEmailAddress(email);
+        return new ResponseEntity<>(role, HttpStatus.OK);
+    }
+
 }

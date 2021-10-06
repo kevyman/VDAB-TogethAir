@@ -33,5 +33,9 @@ export class PersonService{
       return this.http.get<Person>(`${this.apiServerUrl}/findByEmail/${emailAddress}`)
     }
 
+    public findRoleByEmailAddress(email : string): Observable<string> {
+      return this.http.get<string>(`${this.apiServerUrl}/findRole/${email}`)
+
+  }
 }
 
