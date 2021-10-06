@@ -6,7 +6,9 @@
 <head>
   <meta charset="utf-8">
   <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">-->
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -22,8 +24,11 @@
       <div class="modal-header">
 
         <h5 class="modal-title" id="exampleModalLabel">Book flight to {{bookFlight.destinationAirport.cityName}}</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
 
+        <div>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
+
+        </div>
       </div>
       <div class="modal-body">
 
@@ -216,7 +221,6 @@
                     </li>
                   </ul>
 
-                  <button type="button" class="btn btn-primary btn-block waves-effect waves-light">go to checkout</button>
 
                 </div>
               </div>
@@ -243,7 +247,75 @@
                 </div>
               </div>
               <!-- Card -->
+<div  style="margin-top:40px;">
 
+
+  <div class="container main">
+    <div class="row">
+      <div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="row">
+              <h3 class="text-center">Payment Details</h3>
+
+            </div>
+          </div>
+          <div class="panel-body">
+            <form role="form">
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="form-group"  style="margin-top:15px;">
+                    <label>CARD NUMBER</label>
+                    <div class="input-group">
+                      <input style="margin-top:4px;" type="tel" class="form-control" placeholder="Valid Card Number" />
+                      <span style="margin-left:4px;margin-top:9px;" class="input-group-addon"><span class="fa fa-credit-card"></span></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-7 col-md-7">
+                  <div class="form-group" style="margin-top:15px;">
+                    <label><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                    <input style="margin-top:4px;" type="tel" class="form-control" placeholder="MM / YY" />
+                  </div>
+                </div>
+                <div class="col-xs-5 col-md-5 pull-right">
+                  <div class="form-group" style="margin-top:15px;">
+                    <label>CV CODE</label>
+                    <input style="margin-top:4px;" type="tel" class="form-control" placeholder="CVC" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12" style="margin-top:15px;">
+                  <div class="form-group">
+                    <label>CARD OWNER</label>
+                    <input style="margin-top:4px;" type="text" class="form-control" placeholder="Card Owner Names" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <div class="col-xs-12" style="margin-top:15px;">
+                <button class="btn btn-warning btn-lg btn-block">Process payment</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .cc-img {
+        margin: 0 auto;
+    }
+</style>
+
+</div>
             </div>
             <!--Grid column-->
 
@@ -254,10 +326,7 @@
         <!--Section: Block Content-->
 
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+
     </div>
   </div>
 </div>
