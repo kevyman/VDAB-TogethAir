@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 @Entity
 @Data
@@ -26,4 +27,8 @@ public class Booking {
 
     @Column(nullable = false , length = 100)
     private LocalDateTime bookingDate;
+
+    @ManyToOne
+    private Flight flight;
+
 }
