@@ -91,9 +91,7 @@ ngOnInit(): void {
 }
 
 bookFlightSaveUser(flight: Flight): void {
-
   this.tempFunc().subscribe(userObj => this.userObj = userObj);
-
   if (!this.personService.findPersonByEmailAddress(this.userObj.email)) {
     console.log(this.userObj);
     this.person.emailAddress = this.userObj.email;
@@ -102,7 +100,6 @@ bookFlightSaveUser(flight: Flight): void {
     this.personService.addPerson(this.person).subscribe(
       (response: Person) => {
         console.log(response);
-        // this.router.navigate(['/bookingPage/{flightId}']);
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
