@@ -19,7 +19,7 @@ import { AirlineService } from 'src/app/services/airline.service';
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })
-export class LandingComponent implements OnInit {
+export class LandingComponent implements OnInit{
 
   airports!: Airport[];
   departAirports!: Airport[];
