@@ -30,8 +30,4 @@ export class CartComponent implements OnInit {
     this.totalPrice = this.adultPrice + this.childPrice + this.bookingFee;
   }
 
-  didItPass(): void{
-    console.log(this.bookFlight);
-  }
-
 }
