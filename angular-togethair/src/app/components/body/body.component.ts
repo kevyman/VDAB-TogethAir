@@ -33,16 +33,16 @@ export class BodyComponent implements OnInit, OnDestroy {
 
   public person: Person = { emailAddress: "", role: "" };
 
-  public bookFlight: Flight = { 
+  public bookFlight: Flight = {
     "roundtrip": false,
     "departureAirport": { "id": 2357, "code": "MSU", "name": "Moshoeshoe Intl Arpt", "cityCode": "MSU", "cityName": "Maseru", "countryName": "LESOTHO", "countryCode": "LS", "timezone": "2", "lat": "-29.462256", "lon": "27.552503", "numAirports": 1, "city": "true" },
     "destinationAirport": { "id": 1503, "code": "ICT", "name": "Mid Continent Arpt", "cityCode": "ICT", "cityName": "Wichita", "countryName": "UNITED STATES", "countryCode": "US", "timezone": "-6", "lat": "37.649944", "lon": "-97.433056", "numAirports": 1, "city": "true" },
     "departureTime": new Date(),
-    "adults": 1, 
-    "children": 2, 
-    "flightClass": "BUSINESS_CLASS", 
-    "flightDuration": 20.679160273192934, 
-    "price": 750.86, 
+    "adults": 1,
+    "children": 2,
+    "flightClass": "BUSINESS_CLASS",
+    "flightDuration": 20.679160273192934,
+    "price": 750.86,
     "airline": { "name": "lufthansa", "imageUrl": "assets/logo2.png" }
    };
 
@@ -91,21 +91,23 @@ ngOnInit(): void {
 }
 
 bookFlightSaveUser(flight: Flight): void {
+
   this.tempFunc().subscribe(userObj => this.userObj = userObj);
 
-  console.log(this.userObj);
-  this.person.emailAddress = this.userObj.email;
-  this.person.role = "CLIENT";
-  console.log(this.person);
-  this.personService.addPerson(this.person).subscribe(
-    (response: Person) => {
-      console.log(response);
-      // this.router.navigate(['/bookingPage/{flightId}']);
-
-    },
-    (error: HttpErrorResponse) => {
-      alert(error.message);
-    });
+  if (!this.personService.findPersonByEmailAddress(this.userObj.email)) {
+    console.log(this.userObj);
+    this.person.emailAddress = this.userObj.email;
+    this.person.role = "CLIENT";
+    console.log(this.person);
+    this.personService.addPerson(this.person).subscribe(
+      (response: Person) => {
+        console.log(response);
+        // this.router.navigate(['/bookingPage/{flightId}']);
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      });
+  }
 
   this.bookFlight = flight;
   console.log(this.bookFlight);
