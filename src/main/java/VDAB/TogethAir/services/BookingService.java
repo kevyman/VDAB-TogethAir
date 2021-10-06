@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -29,5 +30,9 @@ public class BookingService {
     @Transactional
     public void deleteBooking(Long id){
         bookingRepository.deleteById(id);
+    }
+
+    public List<Booking> findBookings() {
+        return bookingRepository.findAll();
     }
 }

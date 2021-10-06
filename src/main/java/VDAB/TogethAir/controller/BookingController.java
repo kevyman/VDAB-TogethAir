@@ -7,11 +7,19 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.*;
+
 @RestController
 @AllArgsConstructor
 public class BookingController {
 
     private BookingService bookingService;
+
+    @GetMapping("/allBookings")
+    public ResponseEntity<List<Booking>> findBookings() throws Exception {
+        List<Booking> booking = bookingService.findBookings();
+        return new ResponseEntity<>(booking , HttpStatus.OK);
+    }
 
     @GetMapping("/findBooking/{id}")
     public ResponseEntity<Booking> findBookingById(Long id) throws Exception {
