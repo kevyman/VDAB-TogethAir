@@ -37,8 +37,8 @@ public class BookingService {
         return bookingRepository.findAll();
     }
 
-    public List<Booking> findBookingsByPerson(Person person){
-        return findBookingsByPerson(person);
+    public List<Booking> findBookingsByPerson(Long id){
+        return bookingRepository.findBookingByPerson(id);
     }
 
 }

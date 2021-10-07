@@ -24,9 +24,9 @@ export class BookingService{
     return this.http.post<Booking>(`${this.apiServerUrl}/addBooking` , booking);
   }
 
-  //
-  // public getBookingsOfPerson(person : Person): Observable<ArrayBuffer>{
-  //   return this.http.get<Booking[]>(`${this.apiServerUrl}/findBookingsOfPerson` , person);
-  // }
+
+  public getBookingsOfPerson(person : Person): Observable<Booking[]>{
+    return this.http.get<Booking[]>(`${this.apiServerUrl}/findBookingsOfPerson/${person.id}`);
+  }
 
 }

@@ -14,7 +14,7 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit {
 
   private userObj: any;
-  public person: Person = {emailAddress: "", role: ""};
+  public person: Person = {id: 0, emailAddress: "", role: ""};
 
   constructor(public auth: AuthService,
               @Inject(DOCUMENT) private doc: Document,
