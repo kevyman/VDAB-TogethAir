@@ -5,7 +5,7 @@
 
 .section .section-center {
 	position: absolute;
-	top: 50%;
+	top: 45%;
 	left: 0;
 	right: 0;
 	-webkit-transform: translateY(-50%);
@@ -13,14 +13,14 @@
 }
 
 #booking {
-	font-family: 'PT Sans', sans-serif;
+	font-family: 'Dubai', sans-serif;
 	background-image: url('../../../assets/background.jpg');
 	background-size: cover;
 	background-position: center;
 }
 
 .booking-form {
-	background: rgba(0, 0, 0, 0.7);
+	background: rgba(255, 255, 255, 0.61);
 	padding: 40px;
 	border-radius: 6px;
 }
@@ -33,7 +33,7 @@
 .booking-form .form-control {
 	background-color: #fff;
 	height: 50px;
-	color: #191a1e;
+	color: #5e2ced;
 	border: none;
 	font-size: 16px;
 	font-weight: 400;
@@ -74,7 +74,7 @@
 	height: 32px;
 	text-align: center;
 	pointer-events: none;
-	color: rgba(0, 0, 0, 0.3);
+	color: rgb(94, 44, 237);
 	font-size: 14px;
 }
 
@@ -94,7 +94,7 @@
 	line-height: 24px;
 	height: 24px;
 	font-size: 12px;
-	color: #fff;
+	color: #5e2ced;
 }
 
 .booking-form .form-checkbox input {
@@ -108,7 +108,7 @@
 	padding-top: 4px;
 	padding-left: 30px;
 	font-weight: 400;
-	color: #fff;
+	color: #5e2ced;
 }
 
 .booking-form .form-checkbox label+label {
@@ -121,7 +121,7 @@
 	top: 4px;
 	width: 20px;
 	height: 20px;
-	background: #fff;
+	background: #5e2ced;
 	border-radius: 50%;
 }
 
@@ -133,7 +133,7 @@
 	width: 0px;
 	height: 0px;
 	border-radius: 50%;
-	background-color: #5e2ced ;
+	background-color: #ffffff;
 	-webkit-transition: 0.2s all;
 	transition: 0.2s all;
 	-webkit-transform: translate(-50%, -50%);
@@ -181,7 +181,7 @@
 .title{
 
   margin-right: auto;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: 'Dubai', sans-serif;
   font-size: 22px;
   padding-top: 8px;
   color: #5e2ced;
@@ -214,5 +214,13 @@
 
 
 .booking-form{
-  max-height: 70%;
+  max-height: 100%;
+}
+.text-decoration{
+  color: #ffffff;
+}
+h1 {
+  font-size:60px;
+
+
 }
