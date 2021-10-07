@@ -23,6 +23,7 @@ export class CartComponent implements OnInit {
   bookingFee: number;
   kids: number;
   grownups: number;
+  randBookers: number = 8;
 
 
 
@@ -56,6 +57,7 @@ export class CartComponent implements OnInit {
     this.totalPrice = this.adultPrice + this.childPrice + this.bookingFee;
     this.kids = this.bookFlight.children;
     this.grownups = this.bookFlight.adults;
+    this.randBookers =( Math.floor(Math.random() * 15)) + 3;
   }
 
   didItChange(){
