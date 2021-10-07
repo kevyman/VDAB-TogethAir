@@ -23,14 +23,16 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.auth.user$.subscribe(userObj => {
-      this.userObj = userObj
-      if (userObj) {
-        this.personService.findPersonByEmailAddress(this.userObj.email).subscribe(person => {
-          this.person = person;
-        });
-      }
-    });
+    if (!this.personService.findPersonByEmailAddress(this.userObj.email)) {
+      this.auth.user$.subscribe(userObj => {
+        this.userObj = userObj
+        if (userObj) {
+          this.personService.findPersonByEmailAddress(this.userObj.email).subscribe(person => {
+            this.person = person;
+          });
+        }
+      });
+    }
   }
 
   logout(): void {
