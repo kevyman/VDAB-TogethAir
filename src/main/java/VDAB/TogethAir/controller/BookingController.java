@@ -1,6 +1,7 @@
 package VDAB.TogethAir.controller;
 
 import VDAB.TogethAir.model.Booking;
+import VDAB.TogethAir.model.user.Person;
 import VDAB.TogethAir.services.BookingService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -43,5 +44,11 @@ public class BookingController {
     public ResponseEntity<?>  deleteBooking(@PathVariable("id") Long id) {
         bookingService.deleteBooking(id);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/findBookingsOfPerson/{id}")
+    public ResponseEntity<List<Booking>> findBookingsOfPerson(@PathVariable("id") Long id) throws Exception {
+        List<Booking> booking = bookingService.findBookingsByPerson(id);
+        return new ResponseEntity<>(booking , HttpStatus.OK);
     }
 }
