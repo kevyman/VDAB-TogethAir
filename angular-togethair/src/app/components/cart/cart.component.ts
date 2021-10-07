@@ -54,7 +54,7 @@ export class CartComponent implements OnInit {
     this.adultPrice = this.bookFlight.adults * this.bookFlight.price;
     this.childPrice = this.bookFlight.children * this.bookFlight.price * .8; //kids get 20% discount
     this.bookingFee = (this.adultPrice + this.childPrice) * .05;
-    this.totalPrice = this.adultPrice + this.childPrice + this.bookingFee;
+    this.totalPrice = Number((this.adultPrice + this.childPrice + this.bookingFee).toFixed(2));
     this.kids = this.bookFlight.children;
     this.grownups = this.bookFlight.adults;
     this.randBookers =( Math.floor(Math.random() * 15)) + 3;
@@ -71,7 +71,7 @@ export class CartComponent implements OnInit {
     this.adultPrice = this.bookFlight.adults * this.bookFlight.price;
     this.childPrice = this.bookFlight.children * this.bookFlight.price * .8; //kids get 20% discount
     this.bookingFee = (this.adultPrice+this.childPrice)*.05;
-    this.totalPrice = this.adultPrice + this.childPrice + this.bookingFee;
+    this.totalPrice = Number((this.adultPrice + this.childPrice + this.bookingFee).toFixed(2));
   }
 
   childInc(){
