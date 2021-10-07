@@ -22,7 +22,7 @@ public class Booking {
     @Column(nullable = false , length = 100)
     private Double totalPrice;
 
-    @ManyToOne
+    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
     private Person person;
 
     @Column(nullable = false , length = 100)

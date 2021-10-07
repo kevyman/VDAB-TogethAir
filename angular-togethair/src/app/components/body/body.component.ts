@@ -118,24 +118,17 @@ export class BodyComponent implements OnInit, OnDestroy {
   }
 
   bookFlightSaveUser(flight: Flight): void {
-    this.tempFunc().subscribe(userObj => {
-      this.userObj = userObj
-      if (!this.personService.findPersonByEmailAddress(this.userObj.email)) {
-        this.person.emailAddress = this.userObj.email;
-        this.person.role = "CLIENT";
-        this.personService.addPerson(this.person).subscribe(
-          (response: Person) => {
-
-          },
-          (error: HttpErrorResponse) => {
-            alert(error.message);
-          });
+    let isAuth: boolean = false;
+    this.auth.isAuthenticated$.subscribe(isAuthenticated => {
+      isAuth = isAuthenticated
+      if (!isAuth) {
+        this.auth.loginWithPopup()
       }
-      ;
-    });
-    this.bookFlight = flight;
-    console.log(this.bookFlight);
+      this.bookFlight = flight;
+      console.log(this.bookFlight);
+    })
   }
+
 
 
   tempFunc() {

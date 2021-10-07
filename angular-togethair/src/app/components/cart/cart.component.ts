@@ -6,6 +6,7 @@ import {Person} from "../../models/person";
 import {BookingService} from "../../services/booking.service";
 import {AuthService} from "@auth0/auth0-angular";
 import {Router} from "@angular/router";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-cart',
@@ -53,25 +54,31 @@ export class CartComponent implements OnInit {
   }
 
   processPayment() {
-    let isAuth: boolean = false;
+
     this.booking.bookingDate = new Date();
     this.booking.totalPrice = this.totalPrice;
-    this.auth.isAuthenticated$.subscribe(isAuthenticated => {
-      isAuth = isAuthenticated
-      if (!isAuth) {
-        this.auth.loginWithPopup()
-      }
       this.addFunctionTemp()
-    })
+
   }
 
   private addFunctionTemp() {
     this.tempFunc().subscribe(userObj => {
         this.personService.findPersonByEmailAddress(userObj.email).subscribe(person => {
+              if(!person) {
+                console.log(userObj.email)
+                this.person.emailAddress = userObj.email;
+                this.person.role = "CLIENT";
+
+                this.personService.addPerson(this.person).subscribe(
+                  (response: Person) => {
+                    },
+                  (error: HttpErrorResponse) => {
+                    alert(error.message);
+                  });
+              }
             this.person = person
             this.booking.person = this.person;
             this.booking.flight = this.bookFlight;
-
             this.bookingService.addBooking(this.booking).subscribe(() => {
               this.router.navigate(['/overview'])
             });
