@@ -1,5 +1,10 @@
 .logoHeader{
+
     height:150px;
+    object-position: left bottom;
+
+    height:100px;
+
 
 }
 .title{
@@ -30,15 +35,25 @@
 .navbar-toggler-icon{
   overflow: visible !important;
   position: fixed !important;
-  color: black !important;
+  color: white !important;
   z-index: -1;
 }
 .dropdown-menu{
   overflow: visible !important;
   position: fixed !important;
-  color: black !important;
+  color: white !important;
   z-index: -1;
 }
 .navbar-inner {
   background-color:transparent;
+}
+.navbar-custom {
+  background-color: #5e2ced;
+}
+
+.navbar-custom .navbar-text {
+  color: white;
+}
+.nav-item{
+  text-decoration: none !important;
 }

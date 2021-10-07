@@ -122,29 +122,37 @@
 
                   </div>
                 </div>
+
+              </div>
+              <!-- Card -->
+
+              <!-- Card -->
+              <div class="card mb-3">
+                <div class="card-body">
+
+                  <h5 class="mb-4">We accept</h5>
+
+                  <img class="mr-2" width="45px"
+                       src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
+                       alt="Visa"
+                       style="margin-right:10px;">
+                  <img class="mr-2" width="45px"
+                       src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
+                       alt="American Express"
+                       style="margin-right:10px;">
+                  <img class="mr-2" width="45px"
+                       src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
+                       alt="Mastercard"
+                       style="margin-right:10px;">
+                  <img class="mr-2" width="45px"
+                       src="https://www.drupal.org/files/project-images/paypal_logo.jpg"
+                       alt="PayPal acceptance mark"
+                       style="margin-right:10px;">
+
                 <!-- Card -->
 
 
-                <!-- Card -->
-                <div class="card mb-3">
-                  <div class="card-body">
-
-                    <h5 class="mb-4">We accept</h5>
-
-                    <div class="d-flex justify-content-around">
-                      <img class="mr-2" width="45px"
-                        src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/visa.svg"
-                        alt="Visa">
-                      <img class="mr-2" width="45px"
-                        src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/amex.svg"
-                        alt="American Express">
-                      <img class="mr-2" width="45px"
-                        src="https://mdbootstrap.com/wp-content/plugins/woocommerce-gateway-stripe/assets/images/mastercard.svg"
-                        alt="Mastercard">
-                      <img class="mr-2" width="45px" src="https://www.drupal.org/files/project-images/paypal_logo.jpg"
-                        alt="PayPal acceptance mark">
-                    </div>
-                  </div>
+               
                 </div>
                 <!-- Card -->
 
@@ -219,6 +227,8 @@
                 <div style="margin-top:40px;">
 
 
+
+
                   <div class="container main">
                     <div class="row">
                       <div>
@@ -291,7 +301,43 @@
 
                 </div>
               </div>
-              <!--Grid column-->
+
+              <div class="row">
+                <div class="col-xs-7 col-md-7">
+                  <div class="form-group" style="margin-top:15px;">
+                    <label><span class="hidden-xs">EXPIRATION</span><span class="visible-xs-inline">EXP</span> DATE</label>
+                    <input style="margin-top:4px;" type="tel" class="form-control" placeholder="MM / YY" />
+                  </div>
+                </div>
+                <div class="col-xs-5 col-md-5 pull-right">
+                  <div class="form-group" style="margin-top:15px;">
+                    <label>CV CODE</label>
+                    <input style="margin-top:4px;" type="tel" class="form-control" placeholder="CVC" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12" style="margin-top:15px;">
+                  <div class="form-group">
+                    <label>CARD OWNER</label>
+                    <input style="margin-top:4px;" type="text" class="form-control" placeholder="Card Owner Names" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <div class="col-xs-12" style="margin-top:25px;">
+                <button class="btn btn-warning btn-lg btn-block" type="button" (click)="processPayment()" data-bs-dismiss="modal">Process payment</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
             </div>
             <!--Grid row-->

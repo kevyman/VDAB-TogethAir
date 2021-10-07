@@ -4,6 +4,7 @@ import {DOCUMENT} from "@angular/common";
 import {PersonService} from "../../services/person.service";
 import {Person} from "../../models/person";
 import {HttpErrorResponse} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -12,32 +13,54 @@ import {HttpErrorResponse} from "@angular/common/http";
 })
 export class HeaderComponent implements OnInit {
 
-  public userObj : any = this.auth.user$.subscribe(userObj => this.userObj = userObj);
-  public person: Person = {emailAddress: "", role: ""};
+  private userObj: Person = {emailAddress: "", id: 0, role: ""};
+  public person: Person = {id: 0, emailAddress: "", role: ""};
 
   constructor(public auth: AuthService,
-              @Inject(DOCUMENT) private doc : Document,
-              private personService:PersonService) { }
+              @Inject(DOCUMENT) private doc: Document,
+              private personService: PersonService,
+              public router: Router) {
+  }
 
 
   ngOnInit(): void {
-    if (this.userObj?.email) {
-      this.personService.findPersonByEmailAddress(this.userObj.email).subscribe(person => {
-      this.person = person;
-      console.log(this.person.role);
-     });
-    }
   }
 
-  logout():void{
-    this.auth.logout({returnTo: this.doc.location.origin})
+  logout(): void {
+    this.auth.logout()
   }
 
-  loginWithRedirect():void{
-    this.auth.loginWithRedirect();
+  loginWithPopup(): void {
+    this.auth.loginWithPopup().subscribe(() => {
+        this.tempFunc().subscribe(userObj => {
+          console.log(userObj)
+          this.personService.findPersonByEmailAddress(userObj.email).subscribe(person => {
+            if (!person) {
+              console.log(userObj.email)
+              this.person.emailAddress = userObj.email;
+              this.person.role = "CLIENT";
+
+              this.personService.addPerson(this.person).subscribe(
+                (response: Person) => {
+                },
+                (error: HttpErrorResponse) => {
+                  alert(error.message);
+                });
+            }
+          });
+        });
+      }
+    );
   }
 
-  private tempFunc() {
+
+  public goToProfilePage() {
+    this.router.navigate(['/profile'])
+  }
+
+  tempFunc() {
     return this.auth.user$;
   }
 }
+
+

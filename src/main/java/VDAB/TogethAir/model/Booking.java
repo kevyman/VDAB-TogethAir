@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 @Entity
 @Data
@@ -19,11 +20,15 @@ public class Booking {
     private Long id;
 
     @Column(nullable = false , length = 100)
-    private Double flightPrice;
+    private Double totalPrice;
 
-    @ManyToOne
+    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
     private Person person;
 
     @Column(nullable = false , length = 100)
     private LocalDateTime bookingDate;
+
+    @ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
+    private Flight flight;
+
 }
