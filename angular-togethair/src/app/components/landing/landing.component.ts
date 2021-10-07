@@ -1,17 +1,18 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { HttpErrorResponse } from "@angular/common/http";
-import { AirportService } from "../../services/airport.service";
-import { Airport } from "../../models/airport";
-import { NgForm } from "@angular/forms";
-import { FlightService } from "../../services/flight.service";
-import { Flight } from "../../models/flight";
-import { DataService } from "../../services/data.service";
-import { Airline } from "../../models/airline";
-
-import { Subscription } from "rxjs";
-import { Router } from '@angular/router';
-import { AuthService } from "@auth0/auth0-angular";
-import { AirlineService } from 'src/app/services/airline.service';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {HttpErrorResponse} from "@angular/common/http";
+import {AirportService} from "../../services/airport.service";
+import {Airport} from "../../models/airport";
+import {NgForm} from "@angular/forms";
+import {FlightService} from "../../services/flight.service";
+import {Flight} from "../../models/flight";
+import {DataService} from "../../services/data.service";
+import {Airline} from "../../models/airline";
+import {Subscription} from "rxjs";
+import {Router} from '@angular/router';
+import {AuthService} from "@auth0/auth0-angular";
+import {AirlineService} from 'src/app/services/airline.service';
+import {Person} from "../../models/person";
+import {PersonService} from "../../services/person.service";
 
 
 @Component({
@@ -19,26 +20,30 @@ import { AirlineService } from 'src/app/services/airline.service';
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.css']
 })
-export class LandingComponent implements OnInit {
+export class LandingComponent implements OnInit, OnDestroy {
 
   airports!: Airport[];
   departAirports!: Airport[];
   arrivalAirports!: Airport[];
   options: Boolean = true;
   airlines: Airline[] = [];
+  public userObj: any = this.tempFunc().subscribe(userObj => this.userObj = userObj);
+  public person: Person = {id: 0, emailAddress: "", role: ""};
+
 
   public airportPair: string = "";
 
   public subscription!: Subscription;
 
   constructor(private airportService: AirportService,
-    private dataService: DataService,
-    private flightService: FlightService,
-    private router: Router,
-    public auth: AuthService,
-    private airlineService: AirlineService
-  ) { }
-
+              private dataService: DataService,
+              private flightService: FlightService,
+              private router: Router,
+              public auth: AuthService,
+              private airlineService: AirlineService,
+              private personService: PersonService
+  ) {
+  }
 
   ngOnInit(): void {
     this.getAirports();
@@ -47,10 +52,33 @@ export class LandingComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-
+    this.callAdd();
     this.subscription.unsubscribe();
 
   }
+
+  tempFunc() {
+    return this.auth.user$;
+  }
+
+  callAdd() {
+    if (this.userObj?.email) {
+      this.personService.findPersonByEmailAddress(this.userObj.email).subscribe(person => {
+        if (!person) {
+          this.person.emailAddress = this.userObj.email;
+          this.person.role = "CLIENT";
+
+          this.personService.addPerson(this.person).subscribe(
+            (response: Person) => {
+            },
+            (error: HttpErrorResponse) => {
+              alert(error.message);
+            });
+        }
+      });
+    }
+  };
+
 
   public getAirports(): void {
     this.airportService.getAirports().subscribe(
@@ -74,7 +102,6 @@ export class LandingComponent implements OnInit {
       }
     );
   }
-
 
 
   public searchAirport(event: any, box: string): void {
@@ -122,7 +149,7 @@ export class LandingComponent implements OnInit {
       this.flightService.addFlight(tempFlight).subscribe(
         (response: Flight) => {
           console.log(response);
-          if(i==randFlightNum-1){
+          if (i == randFlightNum - 1) {
             this.dataService.changeMessage(tempFlight.departureAirport.name + "/" + tempFlight.destinationAirport.name);
             form.reset();
             this.router.navigate(['/general']);
@@ -140,15 +167,15 @@ export class LandingComponent implements OnInit {
 
     let tempFlight: Flight = inputFlight;
 
-    if(typeof inputFlight.departureAirport === 'string'){
+    if (typeof inputFlight.departureAirport === 'string') {
       tempFlight.departureAirport = this.findAirportByName(String(inputFlight.departureAirport));
-    }else{
+    } else {
       tempFlight.departureAirport = inputFlight.departureAirport;
     }
 
-    if(typeof inputFlight.destinationAirport === 'string'){
+    if (typeof inputFlight.destinationAirport === 'string') {
       tempFlight.destinationAirport = this.findAirportByName(String(inputFlight.destinationAirport));
-    }else{
+    } else {
       tempFlight.destinationAirport = inputFlight.destinationAirport;
     }
 
@@ -165,7 +192,6 @@ export class LandingComponent implements OnInit {
 
     return tempFlight;
   }
-
 
 
   public findAirportByName(name: string) {

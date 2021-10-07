@@ -3,7 +3,7 @@ import {Airline} from "./airline";
 
 
 export interface Flight{
-  id?: number;
+  id: number;
   departureAirport: Airport;
   destinationAirport: Airport;
   departureTime: Date;

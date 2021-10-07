@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @AllArgsConstructor
 public class PersonController {
@@ -40,8 +42,14 @@ public class PersonController {
 
     @GetMapping("/findByEmail/{emailAddress}")
     public ResponseEntity<Person> findPersonByEmail(@PathVariable("emailAddress") String emailAddress) throws Exception {
-        Person person = personService.findPersonByEmailAddress(emailAddress);
-        return new ResponseEntity<>(person , HttpStatus.OK);
+        Optional<Person> person = personService.findPersonByEmailAddress(emailAddress);
+        return new ResponseEntity<>(person.orElse(null), HttpStatus.OK);
+    }
+
+    @GetMapping("/findRole/{email}")
+    public ResponseEntity<String> findRoleByEmail(@PathVariable("email") String email) throws Exception {
+        String role= personService.findRoleByEmailAddress(email);
+        return new ResponseEntity<>(role, HttpStatus.OK);
     }
 
 }
