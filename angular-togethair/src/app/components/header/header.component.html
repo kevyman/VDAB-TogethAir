@@ -12,14 +12,19 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse nav justify-content-end" id="navbarNavAltMarkup">
-      <div class="navbar-nav navbar-text navbar-custom nav justify-content-end">
-        <a class="nav-link" (click)="goToProfilePage()" style="color: white">Profile</a>
-        <a class="nav-item">
-          <span *ngIf="auth.isAuthenticated$ | async" style="color: white" class="nav-link" (click)="logout()">Log out</span> </a>
-        <a class="nav-item">
-          <span *ngIf="(auth.isAuthenticated$ | async) == false" style="color: white" class="nav-link" (click)="loginWithPopup()">Log in</span>
-        </a>
-      </div>
+      <ul class="navbar-nav navbar-text navbar-custom nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" (click)="goToProfilePage()" style="color: white">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" *ngIf="auth.isAuthenticated$ | async" style="color: white" (click)="logout()">
+            Log out
+          </a>
+          <a class="nav-link" *ngIf="(auth.isAuthenticated$ | async) == false" style="color: white" (click)="loginWithPopup()">
+            Log in
+          </a>
+        </li> 
+      </ul>
     </div>
   </div>
 </nav>
