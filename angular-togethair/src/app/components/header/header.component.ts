@@ -23,7 +23,6 @@ export class HeaderComponent implements OnInit {
 
 
   ngOnInit(): void {
-    if (!this.personService.findPersonByEmailAddress(this.userObj.email)) {
       this.auth.user$.subscribe(userObj => {
         this.userObj = userObj
         if (userObj) {
@@ -32,7 +31,6 @@ export class HeaderComponent implements OnInit {
           });
         }
       });
-    }
   }
 
   logout(): void {

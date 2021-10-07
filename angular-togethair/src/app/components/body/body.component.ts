@@ -34,6 +34,7 @@ export class BodyComponent implements OnInit, OnDestroy {
   public person: Person = { emailAddress: "", role: "" };
 
   public bookFlight: Flight = {
+    "id": 0,
     "roundtrip": false,
     "departureAirport": { "id": 2357, "code": "MSU", "name": "Moshoeshoe Intl Arpt", "cityCode": "MSU", "cityName": "Maseru", "countryName": "LESOTHO", "countryCode": "LS", "timezone": "2", "lat": "-29.462256", "lon": "27.552503", "numAirports": 1, "city": "true" },
     "destinationAirport": { "id": 1503, "code": "ICT", "name": "Mid Continent Arpt", "cityCode": "ICT", "cityName": "Wichita", "countryName": "UNITED STATES", "countryCode": "US", "timezone": "-6", "lat": "37.649944", "lon": "-97.433056", "numAirports": 1, "city": "true" },
@@ -75,6 +76,14 @@ ngOnInit(): void {
   //   (error: HttpErrorResponse) => {
   //     alert(error.message);
   //   });
+  this.auth.user$.subscribe(userObj => {
+    this.userObj = userObj
+    if (userObj) {
+      this.personService.findPersonByEmailAddress(this.userObj.email).subscribe(person => {
+        this.person = person;
+      });
+    }
+  });
 
   console.log()
     this.tempFunc().subscribe(userObj =>
@@ -169,4 +178,12 @@ ngOnDestroy(): void {
     }
   );
 }
+
+  public deleteFlight(id: number): void{
+  this.flightService.deleteFlight(id).subscribe();
+  }
+
+  public editFlight(flight: Flight): void{
+  this.flightService.updateFlight(flight).subscribe();
+  }
 }
