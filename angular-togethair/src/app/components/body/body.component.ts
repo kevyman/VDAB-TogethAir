@@ -47,6 +47,7 @@ export class BodyComponent implements OnInit, OnDestroy {
     "airline": { "name": "lufthansa", "imageUrl": "assets/logo2.png" }
    };
 
+  public updateFlight!: Flight;
 
 
 
@@ -184,6 +185,20 @@ ngOnDestroy(): void {
   }
 
   public editFlight(flight: Flight): void{
-  this.flightService.updateFlight(flight).subscribe();
+  this.updateFlight= flight;
+  }
+
+  public onEditFlight(editForm: NgForm): void {
+  document.getElementById('editFlightCloseBtn')?.click();
+  this.flightService.updateFlight(editForm.value).subscribe(
+    (response: Flight) => {
+      console.log(response);
+      this.getFlights();
+      editForm.reset();
+    },
+    (error: HttpErrorResponse) => {
+      alert(error.message);
+    }
+  );
   }
 }
