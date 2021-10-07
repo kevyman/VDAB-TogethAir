@@ -11,14 +11,14 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-        <div class="collapse navbar-collapse nav justify-content-end" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse nav justify-content-end" id="navbarNavAltMarkup">
       <div class="navbar-nav navbar-text navbar-custom nav justify-content-end">
         <a class="nav-link" routerLink="/profile" style="color: white">Profile</a>
-          <a class="nav-item">
+        <a class="nav-item">
           <span *ngIf="auth.isAuthenticated$ | async" style="color: white" class="nav-link" (click)="logout()">Log out</span> </a>
-                  <a class="nav-item">
-                    <span *ngIf="(auth.isAuthenticated$ | async) == false" style="color: white" class="nav-link" (click)="loginWithRedirect()">Log in</span>
-                  </a>
+        <a class="nav-item">
+          <span *ngIf="(auth.isAuthenticated$ | async) == false" style="color: white" class="nav-link" (click)="loginWithRedirect()">Log in</span>
+        </a>
       </div>
     </div>
   </div>
