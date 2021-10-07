@@ -132,6 +132,67 @@
 </div>
 
 
+<div class="container main">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="modal fade" id="example3Modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="example3ModalLabel">Edit flight</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form #editForm="ngForm" (ngSubmit)="onEditFlight(editForm)">
+                <div class="mb-3">
+                  <label for="id" class="form-label">id</label>
+                  <input  type ="hidden" ngModel={{updateFlight?.id}} name="id" class="form-control" id="id"
+                          placeholder="id">
+                </div>
+                <div class="mb-3">
+                  <label for="departureAirport" class="form-label">Departure Airport</label>
+                  <input type ="hidden" ngModel={{updateFlight?.departureAirport}} name="departureAirport" class="form-control" id="departureAirport1"
+                         placeholder="e.g. Brussels" >
+                </div>
+                <div class="mb-3">
+                  <label for="destinationAirport" class="form-label">Destination Airport</label>
+                  <input type ="hidden" ngModel={{updateFlight?.destinationAirport}} name="destinationAirport" class="form-control" id="destinationAirport1"
+                         placeholder="e.g. New York" >
+                </div>
+                <div class="mb-3">
+                  <label for="departureTime" class="form-label">Departure Time</label>
+                  <input type="datetime-local" ngModel={{updateFlight?.departureTime}} name="departureTime" class="form-control" id="departureTime1"
+                         required>
+                </div>
+                <div class="mb-3">
+                  <label for="destinationTime" class="form-label">Destination Time</label>
+                  <input type="datetime-local" ngModel={{updateFlight?.destinationTime}} name="destinationTime" class="form-control" id="destinationTime1"
+                         required>
+                </div>
+                <div class="mb-3">
+                  <label for="flightDuration" class="form-label">Flight Duration Hours</label>
+                  <input type="number" ngModel={{updateFlight?.flightDuration}} name="flightDuration" class="form-control" id="flightDuration1"
+                         placeholder="12" required>
+                </div>
+                <div class="mb-3">
+                  <label for="price" class="form-label">Price</label>
+                  <input type="number" ngModel={{updateFlight?.price}} name="price" class="form-control" id="price1" placeholder="12" required>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                          id="editFlightCloseBtn">Close</button>
+                  <button [disabled]="editForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-md-3 col-xs-12" *ngFor="let flight of filteredFlights">

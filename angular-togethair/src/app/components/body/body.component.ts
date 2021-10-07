@@ -33,6 +33,8 @@ export class BodyComponent implements OnInit, OnDestroy {
 
   public person: Person = {id: 0, emailAddress: "", role: ""};
 
+  public updateFlight !: Flight;
+
   public bookFlight: Flight = {
     "id": 0,
     "roundtrip": false,
@@ -195,7 +197,21 @@ export class BodyComponent implements OnInit, OnDestroy {
 
   }
 
-  public editFlight(flight: Flight): void {
-    this.flightService.updateFlight(flight).subscribe();
+  public editFlight(flight: Flight): void{
+    this.updateFlight = flight;
+  }
+
+  public onEditFlight(editForm: NgForm): void {
+    document.getElementById('editFlightCloseBtn')?.click();
+    this.flightService.updateFlight(editForm.value).subscribe(
+      (response: Flight) => {
+        console.log(response);
+        this.getFlights();
+        editForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
   }
 }

@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import {Booking} from "../models/booking";
 import {Router} from "@angular/router";
+import {Person} from "../models/person";
 
 // noinspection TypeScriptValidateTypes
 @Injectable({
@@ -25,9 +26,9 @@ export class BookingService{
     return this.http.post<Booking>(`${this.apiServerUrl}/addBooking` , booking);
   }
 
-  //
-  // public getBookingsOfPerson(person : Person): Observable<Booking[]>{
-  //   return this.http.get<Booking[]>(`${this.apiServerUrl}/findBookingsOfPerson/${person.id}`);
-  // }
+
+  public getBookingsOfPerson(person : Person): Observable<Booking[]>{
+    return this.http.get<Booking[]>(`${this.apiServerUrl}/findBookingsOfPerson/${person.id}`);
+  }
 
 }
