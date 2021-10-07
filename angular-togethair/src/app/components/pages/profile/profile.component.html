@@ -114,7 +114,7 @@
                   <tbody>
                   <tr>
                     <th scope="row">{{booking.id}}</th>
-                    <td>{{booking.bookingDate}}</td>
+                    <td>{{booking.bookingDate | date:'medium'}}</td>
                     <td>{{booking.totalPrice}}</td>
                     <td>{{booking.flight.departureAirport.name}}</td>
                     <td>{{booking.flight.destinationAirport.name}}</td>
