@@ -46,9 +46,9 @@ public class BookingController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/findBookingsOfPerson")
-    public ResponseEntity<List<Booking>> findBookingsOfPerson(@RequestBody Person person) throws Exception {
-        List<Booking> booking = bookingService.findBookingsByPerson(person);
+    @GetMapping("/findBookingsOfPerson/{id}")
+    public ResponseEntity<List<Booking>> findBookingsOfPerson(@PathVariable("id") Long id) throws Exception {
+        List<Booking> booking = bookingService.findBookingsByPerson(id);
         return new ResponseEntity<>(booking , HttpStatus.OK);
     }
 }

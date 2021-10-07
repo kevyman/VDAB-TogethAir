@@ -28,7 +28,7 @@ export class LandingComponent implements OnInit, OnDestroy {
   options: Boolean = true;
   airlines: Airline[] = [];
   public userObj: any = this.tempFunc().subscribe(userObj => this.userObj = userObj);
-  public person: Person = {emailAddress: "", role: ""};
+  public person: Person = {id: 0, emailAddress: "", role: ""};
 
 
   public airportPair: string = "";

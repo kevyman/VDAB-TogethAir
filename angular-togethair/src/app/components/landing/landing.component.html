@@ -1,14 +1,24 @@
+<app-header></app-header>
 <div id="booking" class="section">
-  <img class="logoHeader" src="assets/tgAir-newcolorbrandname.png" alt="logo" href="#">
+<!--  <img class="logoHeader" src="assets/tgAir-newcolorbrandname.png" alt="logo" href="#">-->
 <!--  <a style="margin-right: 50px" class="navbar-brand title" >TogethAir</a>-->
 <!--  <app-login-button *ngIf="(auth.isAuthenticated$ | async) == false">-->
 <!--  </app-login-button>-->
 <!--  <app-logout-button *ngIf="auth.isAuthenticated$ | async">-->
 <!--  </app-logout-button>-->
   <br>
-  <div>
-   <img src="../../../assets/HeaderLandingPage.png" class="rounded mx-auto d-block" height="41" width="900"/>
-  </div>
+  <br>
+  <br>
+  <br>
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <h1 style="font-family: 'Dubai',sans-serif" class="text-center text-decoration" >Hello traveler. Where would you like to go?</h1>
+      </div>
+    </div>
+
+<!--   <img src="../../../assets/TitleLandingPage.png" height="41" width="900" class="rounded mx-auto d-block"/>-->
+
 
   <div class="section-center">
     <div class="container">
@@ -28,15 +38,14 @@
                   <span></span>One way
                 </label>
 
-                <div class="btn">
-                  <app-login-button *ngIf="(auth.isAuthenticated$ | async) == false" ></app-login-button>
-                  </div>
-                <div>
-                  <app-logout-button *ngIf="auth.isAuthenticated$ | async" ></app-logout-button>
-                </div>
+<!--                <div class="btn">-->
+<!--                  <app-login-button *ngIf="(auth.isAuthenticated$ | async) == false" ></app-login-button>-->
+<!--                  </div>-->
+<!--                <div>-->
+<!--                  <app-logout-button *ngIf="auth.isAuthenticated$ | async" ></app-logout-button>-->
+<!--                </div>-->
               </div>
             </div>
-
 
             <div class="row">
               <div class="col-md-6">
@@ -132,3 +141,4 @@
     </div>
   </div>
 </div>
+<app-footer></app-footer>
