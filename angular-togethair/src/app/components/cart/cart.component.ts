@@ -94,11 +94,10 @@ export class CartComponent implements OnInit {
       this.grownups--;
       this.onNumberChange();
     }
-    
+
   }
 
   processPayment() {
-
     this.booking.bookingDate = new Date();
     this.booking.totalPrice = this.totalPrice;
       this.addFunctionTemp()
