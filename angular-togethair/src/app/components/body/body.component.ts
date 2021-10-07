@@ -31,7 +31,7 @@ export class BodyComponent implements OnInit, OnDestroy {
 
   public userObj !: any;
 
-  public person: Person = { emailAddress: "", role: "" };
+  public person : Person = {id: 0, emailAddress: "", role: ""};
 
   public bookFlight: Flight = {
     "id": 0,
@@ -91,34 +91,31 @@ ngOnInit(): void {
   );
   this.personService.addPerson(this.person);
   this.subscription = this.dataService.airportPair.subscribe(airportPair => this.airportPair = airportPair);
-  console.log(this.airportPair);
   const array = this.airportPair.split("/");
-  console.log(array);
   this.destinationAirport = array[1];
   this.departureAirport = array[0];
   this.getFlights();
 }
 
 bookFlightSaveUser(flight: Flight): void {
-  this.tempFunc().subscribe(userObj => this.userObj = userObj);
-  if (!this.personService.findPersonByEmailAddress(this.userObj.email)) {
-    console.log(this.userObj);
-    this.person.emailAddress = this.userObj.email;
-    this.person.role = "CLIENT";
-    console.log(this.person);
-    this.personService.addPerson(this.person).subscribe(
-      (response: Person) => {
-        console.log(response);
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      });
-  }
+  this.tempFunc().subscribe(userObj => {
+      this.userObj = userObj
+    if (!this.personService.findPersonByEmailAddress(this.userObj.email)) {
+      this.person.emailAddress = this.userObj.email;
+      this.person.role = "CLIENT";
+      this.personService.addPerson(this.person).subscribe(
+        (response: Person) => {
 
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        });
+  };
+});
   this.bookFlight = flight;
   console.log(this.bookFlight);
-
 }
+
 
 
 tempFunc(){
