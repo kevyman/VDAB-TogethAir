@@ -57,3 +57,7 @@
 .nav-item{
   text-decoration: none !important;
 }
+
+a:hover {
+  cursor:pointer;
+ }
