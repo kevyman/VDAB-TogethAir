@@ -28,7 +28,7 @@ public class Booking {
     @Column(nullable = false , length = 100)
     private LocalDateTime bookingDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.REMOVE)
     private Flight flight;
 
 }
