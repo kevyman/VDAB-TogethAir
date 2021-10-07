@@ -195,7 +195,11 @@ export class BodyComponent implements OnInit, OnDestroy {
   }
 
   public deleteFlight(id: number): void {
-    this.flightService.deleteFlight(id).subscribe();
+    this.flightService.deleteFlight(id).subscribe(() => {
+      this.filteredFlights = [];
+      this.getFlights()
+    });
+
   }
 
   public editFlight(flight: Flight): void {
