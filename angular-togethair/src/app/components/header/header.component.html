@@ -81,7 +81,7 @@
           <a class="nav-item">
           <span *ngIf="auth.isAuthenticated$ | async" style="color: white" class="nav-link" (click)="logout()">Log out</span> </a>
                   <a class="nav-item">
-                    <span *ngIf="(auth.isAuthenticated$ | async) == false" style="color: white" class="nav-link" (click)="loginWithRedirect()">Log in</span>
+                    <span *ngIf="(auth.isAuthenticated$ | async) == false" style="color: white" class="nav-link" (click)="loginWithPopup()">Log in</span>
                   </a>
       </div>
     </div>
