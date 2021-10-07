@@ -196,4 +196,8 @@ body {
     width: 500px;
   }
 }
+.btn {
+  color: white;
+  background-color: #5e2ced;
+}
 

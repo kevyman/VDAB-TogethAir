@@ -1,12 +1,10 @@
-<div class="container main">
+<div class="container main" xmlns:th="http://www.w3.org/1999/xhtml">
   <div class="row">
     <div class="col-xs-12">
-      <!-- Button trigger modal -->
-      <!--            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">-->
-      <!--                Add New Flight-->
-      <!--            </button>-->
 
-      <!-- Modal -->
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      Add New Flight
+                  </button>
 
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -135,7 +133,7 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-md-3 col-xs-12" *ngFor="let flight of filteredFlights">
-      <article class="card card-big mb15" (click)="bookFlightSaveUser(flight)" data-bs-toggle="modal" data-bs-target="#checkoutModal">
+      <article class="card card-big mb15" >
         <div class="card__img-wrap">
           <img class="coverPhoto" src="assets/cover.jpg">
           <h4 class="title title-overlay-center">Explore {{flight.destinationAirport.cityName}}</h4>
@@ -161,8 +159,10 @@
               <div class="small">{{flight.destinationTime | date:'short'}}</div>
             </div>
             <div class="price-wrap"><var class="price"><span class="currency">EUR</span><br>{{flight.price}}</var>
-              <a rel="nofollow" class="small">Book</a>
+              <a rel="nofollow" class="small" (click)="bookFlightSaveUser(flight)" data-bs-toggle="modal" data-bs-target="#checkoutModal" >Book</a>
             </div>
+            <span (click)="deleteFlight(flight.id)"  *ngIf="person.role== 'ADMIN'" ><span class="material-icons">delete</span></span>
+            <span (click)="editFlight(flight)"  *ngIf="person.role== 'ADMIN'"  ><span class="material-icons">edit</span></span>
           </div><!--  cost //  -->
         </div> <!-- card__pricelist // -->
       </article> <!-- card // -->
