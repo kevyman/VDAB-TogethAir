@@ -41,7 +41,9 @@
 	box-shadow: none;
 	border-radius: 40px;
 	padding: 0px 25px;
+	outline-style: solid;
 }
+
 
 .booking-form .form-control::-webkit-input-placeholder {
 	color: rgba(82, 82, 84, 0.4);
@@ -166,7 +168,9 @@
 	text-transform: uppercase;
 	-webkit-transition: 0.2s all;
 	transition: 0.2s all;
+
 }
+
 
 .booking-form .submit-btn:hover,
 .booking-form .submit-btn:focus {
@@ -215,12 +219,11 @@
 
 .booking-form{
   max-height: 100%;
+
 }
-.text-decoration{
-  color: #ffffff;
-}
+
 h1 {
-  font-size:60px;
-
-
+  font-size:45px;
+  color: #5e2ced;
+  margin-top:70px;
 }

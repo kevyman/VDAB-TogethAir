@@ -13,12 +13,21 @@
     </button>
     <div class="collapse navbar-collapse nav justify-content-end" id="navbarNavAltMarkup">
       <div class="navbar-nav navbar-text navbar-custom nav justify-content-end">
+
+
+
         <a class="nav-link" routerLink="/profile" style="color: white">Profile</a>
+        <span class="material-icons-outlined">account_circle</span>
+
+
         <a class="nav-item">
-          <span *ngIf="auth.isAuthenticated$ | async" style="color: white" class="nav-link" (click)="logout()">Log out</span> </a>
+          <span  *ngIf="auth.isAuthenticated$ | async" style="color: white" class="nav-link" (click)="logout()">Log out</span> </a>
         <a class="nav-item">
           <span *ngIf="(auth.isAuthenticated$ | async) == false" style="color: white" class="nav-link" (click)="loginWithPopup()">Log in</span>
+
         </a>
+        <span class="material-icons-outlined">logout</span>
+
       </div>
     </div>
   </div>
