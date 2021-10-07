@@ -29,6 +29,7 @@ public class Booking {
     private LocalDateTime bookingDate;
 
     @ManyToOne
+
     private Flight flight;
 
 }
