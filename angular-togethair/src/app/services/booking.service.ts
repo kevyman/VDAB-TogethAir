@@ -3,7 +3,9 @@ import { Observable } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { environment } from "src/environments/environment";
 import {Booking} from "../models/booking";
+import {Person} from "../models/person";
 
+// noinspection TypeScriptValidateTypes
 @Injectable({
   providedIn: 'root'
 })
@@ -19,7 +21,12 @@ export class BookingService{
   }
 
   public addBooking(booking: Booking): Observable<Booking>{
-    return this.http.post<Booking>(`${this.apiServerUrl}/addbooking` , booking);
+    return this.http.post<Booking>(`${this.apiServerUrl}/addBooking` , booking);
   }
+
+  //
+  // public getBookingsOfPerson(person : Person): Observable<ArrayBuffer>{
+  //   return this.http.get<Booking[]>(`${this.apiServerUrl}/findBookingsOfPerson` , person);
+  // }
 
 }
