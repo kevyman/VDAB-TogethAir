@@ -20,7 +20,7 @@ public class Booking {
     private Long id;
 
     @Column(nullable = false , length = 100)
-    private Double flightPrice;
+    private Double totalPrice;
 
     @ManyToOne
     private Person person;
@@ -29,7 +29,6 @@ public class Booking {
     private LocalDateTime bookingDate;
 
     @ManyToOne
-
     private Flight flight;
 
 }

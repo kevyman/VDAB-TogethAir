@@ -16,8 +16,8 @@ export class LoginButtonComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  loginWithRedirect():void{
-    this.auth.loginWithRedirect();
+  loginWithPopup():void{
+    this.auth.loginWithPopup();
 
   }
 

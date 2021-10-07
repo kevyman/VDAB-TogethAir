@@ -89,22 +89,24 @@ ngOnInit(): void {
 }
 
 bookFlightSaveUser(flight: Flight): void {
-  this.tempFunc().subscribe(userObj => this.userObj = userObj);
-  if (!this.personService.findPersonByEmailAddress(this.userObj.email)) {
-    this.person.emailAddress = this.userObj.email;
-    this.person.role = "CLIENT";
-    this.personService.addPerson(this.person).subscribe(
-      (response: Person) => {
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      });
-  }
+  this.tempFunc().subscribe(userObj => {
+      this.userObj = userObj
+    if (!this.personService.findPersonByEmailAddress(this.userObj.email)) {
+      this.person.emailAddress = this.userObj.email;
+      this.person.role = "CLIENT";
+      this.personService.addPerson(this.person).subscribe(
+        (response: Person) => {
 
+        },
+        (error: HttpErrorResponse) => {
+          alert(error.message);
+        });
+  };
+});
   this.bookFlight = flight;
   console.log(this.bookFlight);
-
 }
+
 
 
 tempFunc(){
