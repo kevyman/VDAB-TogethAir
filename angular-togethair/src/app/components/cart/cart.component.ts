@@ -26,8 +26,6 @@ export class CartComponent implements OnInit {
   grownups: number;
   randBookers: number = 8;
 
-
-
   public userObj !: any;
   public person: Person = {id: 0, emailAddress: "", role: ""};
   booking: Booking = {
@@ -37,6 +35,11 @@ export class CartComponent implements OnInit {
     person: this.person,
     totalPrice: this.totalPrice
   };
+
+  public cardNumber: number = 0;
+  public expiration: string = "";
+  public cvCode: number = 0;
+  public cardOwner: string = "";
 
   constructor(public personService: PersonService,
               public bookingService: BookingService,
@@ -58,42 +61,42 @@ export class CartComponent implements OnInit {
     this.totalPrice = Number((this.adultPrice + this.childPrice + this.bookingFee).toFixed(2));
     this.kids = this.bookFlight.children;
     this.grownups = this.bookFlight.adults;
-    this.randBookers =( Math.floor(Math.random() * 15)) + 3;
+    this.randBookers = (Math.floor(Math.random() * 15)) + 3;
   }
 
-  didItChange(){
+  didItChange() {
     console.log("Kids: " + this.kids);
     console.log("Adults: " + this.grownups);
   }
 
-  onNumberChange(){
+  onNumberChange() {
     this.bookFlight.children = this.kids;
     this.bookFlight.adults = this.grownups;
     this.adultPrice = this.bookFlight.adults * this.bookFlight.price;
     this.childPrice = this.bookFlight.children * this.bookFlight.price * .8; //kids get 20% discount
-    this.bookingFee = (this.adultPrice+this.childPrice)*.05;
+    this.bookingFee = (this.adultPrice + this.childPrice) * .05;
     this.totalPrice = Number((this.adultPrice + this.childPrice + this.bookingFee).toFixed(2));
   }
 
-  childInc(){
+  childInc() {
     this.kids++;
     this.onNumberChange();
   }
 
-  childDec(){
-    if(this.kids>0){
+  childDec() {
+    if (this.kids > 0) {
       this.kids--;
       this.onNumberChange();
     }
   }
 
-  adultInc(){
+  adultInc() {
     this.grownups++;
     this.onNumberChange();
   }
 
-  adultDec(){
-    if(this.grownups>0){
+  adultDec() {
+    if (this.grownups > 0) {
       this.grownups--;
       this.onNumberChange();
     }
@@ -101,27 +104,27 @@ export class CartComponent implements OnInit {
   }
 
   processPayment(cardDetails: NgForm) {
-    this.booking.bookingDate = new Date();
-    this.booking.totalPrice = this.totalPrice;
-      this.addFunctionTemp()
+    this.addFunctionTemp()
 
   }
 
   private addFunctionTemp() {
     this.tempFunc().subscribe(userObj => {
         this.personService.findPersonByEmailAddress(userObj.email).subscribe(person => {
-              if(!person) {
-                console.log(userObj.email)
-                this.person.emailAddress = userObj.email;
-                this.person.role = "CLIENT";
+            if (!person) {
+              console.log(userObj.email)
+              this.person.emailAddress = userObj.email;
+              this.person.role = "CLIENT";
 
-                this.personService.addPerson(this.person).subscribe(
-                  (response: Person) => {
-                    },
-                  (error: HttpErrorResponse) => {
-                    alert(error.message);
-                  });
-              }
+              this.personService.addPerson(this.person).subscribe(
+                (response: Person) => {
+                },
+                (error: HttpErrorResponse) => {
+                  alert(error.message);
+                });
+            }
+            this.booking.bookingDate = new Date();
+            this.booking.totalPrice = this.totalPrice;
             this.person = person
             this.booking.person = this.person;
             this.booking.flight = this.bookFlight;
