@@ -223,6 +223,7 @@
 
                         </div>
                       </div>
+                      <form #cardDetails="ngForm" (ngSubmit)="processPayment(cardDetails)">
                       <div class="panel-body">
                         <form role="form">
                           <div class="row">
@@ -231,7 +232,7 @@
                                 <label>CARD NUMBER</label>
                                 <div class="input-group">
                                   <input style="margin-top:4px;" type="tel" class="form-control"
-                                    placeholder="Valid Card Number" />
+                                    placeholder="Valid Card Number" required/>
                                   <span style="margin-left:4px;margin-top:9px;" class="input-group-addon"><span
                                       class="fa fa-credit-card"></span></span>
                                 </div>
@@ -243,13 +244,13 @@
                               <div class="form-group" style="margin-top:15px;">
                                 <label><span class="hidden-xs">EXPIRATION</span><span
                                     class="visible-xs-inline">EXP</span> DATE</label>
-                                <input style="margin-top:4px;" type="tel" class="form-control" placeholder="MM / YY" />
+                                <input style="margin-top:4px;" type="tel" class="form-control" placeholder="MM / YY" required/>
                               </div>
                             </div>
                             <div class="col-xs-5 col-md-5 pull-right">
                               <div class="form-group" style="margin-top:15px;">
                                 <label>CV CODE</label>
-                                <input style="margin-top:4px;" type="tel" class="form-control" placeholder="CVC" />
+                                <input style="margin-top:4px;" type="tel" class="form-control" placeholder="CVC" required/>
                               </div>
                             </div>
                           </div>
@@ -259,7 +260,7 @@
                               <div class="form-group">
                                 <label>CARD OWNER</label>
                                 <input style="margin-top:4px;" type="text" class="form-control"
-                                  placeholder="Card Owner Names" />
+                                  placeholder="Card Owner Names" required/>
 
                               </div>
                             </div>
@@ -269,23 +270,16 @@
                       <div class="panel-footer">
                         <div class="row">
                           <div class="col-xs-12" style="margin-top:15px;">
-                            <button class="btn btn-warning btn-lg btn-block" (click)="processPayment()"
+                            <button class="btn btn-warning btn-lg btn-block" type="submit"
                               data-bs-dismiss="modal">Process payment</button>
                           </div>
                         </div>
                       </div>
+                      </form>
                     </div>
                   </div>
-
                 </div>
               </div>
-
-              <style>
-                .cc-img {
-                  margin: 0 auto;
-                }
-              </style>
-
             </div>
           </div>
         </div>

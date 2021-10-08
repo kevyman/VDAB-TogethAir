@@ -7,6 +7,7 @@ import {BookingService} from "../../services/booking.service";
 import {AuthService} from "@auth0/auth0-angular";
 import {Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-cart',
@@ -99,7 +100,7 @@ export class CartComponent implements OnInit {
 
   }
 
-  processPayment() {
+  processPayment(cardDetails: NgForm) {
     this.booking.bookingDate = new Date();
     this.booking.totalPrice = this.totalPrice;
       this.addFunctionTemp()
