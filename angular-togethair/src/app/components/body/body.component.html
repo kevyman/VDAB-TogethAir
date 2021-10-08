@@ -142,8 +142,11 @@
               <h5 class="modal-title" id="example3ModalLabel">Edit flight</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+
+
             <div class="modal-body">
               <form #editForm="ngForm" (ngSubmit)="onEditFlight(editForm)">
+
                 <div class="mb-3">
                   <label for="id" class="form-label">id</label>
                   <input  type ="hidden" ngModel={{updateFlight?.id}} name="id" class="form-control" id="id"
@@ -178,6 +181,7 @@
                   <label for="price" class="form-label">Price</label>
                   <input type="number" ngModel={{updateFlight?.price}} name="price" class="form-control" id="price1" placeholder="12" required>
                 </div>
+
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                           id="editFlightCloseBtn">Close</button>
@@ -210,7 +214,7 @@
           <div class="title-right-wrap">
             <h5>{{flight.destinationAirport.cityName}}</h5> <small>{{flight.destinationAirport.code}} </small>
           </div>
-        </div> 
+        </div>
         <!--  card__info //  -->
       </div>
 
@@ -229,7 +233,7 @@
               <a rel="nofollow" type="button" class="btn btn-warning" (click)="bookFlightSaveUser(flight)" data-bs-toggle="modal" data-bs-target="#checkoutModal" >Book</a>
             </div>
             <span (click)="deleteFlight(flight.id)"  *ngIf="person.role== 'ADMIN'" ><span class="material-icons">delete</span></span>
-            <span (click)="editFlight(flight)"  *ngIf="person.role== 'ADMIN'"  ><span class="material-icons">edit</span></span>
+            <span (click)="editFlight(flight)"  *ngIf="person.role== 'ADMIN'"  data-bs-target="#example3Modal" data-bs-toggle="modal" ><span class="material-icons">edit</span></span>
           </div><!--  cost //  -->
         </div> <!-- card__pricelist // -->
       </article> <!-- card // -->

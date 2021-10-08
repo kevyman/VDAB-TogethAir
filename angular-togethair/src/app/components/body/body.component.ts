@@ -202,12 +202,22 @@ export class BodyComponent implements OnInit, OnDestroy {
   }
 
   public onEditFlight(editForm: NgForm): void {
+    console.log(editForm.value.destinationAirport)
     document.getElementById('editFlightCloseBtn')?.click();
+    editForm.value.destinationAirport = this.updateFlight.destinationAirport;
+    editForm.value.departureAirport = this.updateFlight.departureAirport;
+    editForm.value.flightClass = this.updateFlight.flightClass;
+    editForm.value.roundtrip = this.updateFlight.roundtrip;
+    editForm.value.children = this.updateFlight.children;
+    editForm.value.adults = this.updateFlight.adults;
+    editForm.value.airline = this.updateFlight.airline;
+
     this.flightService.updateFlight(editForm.value).subscribe(
       (response: Flight) => {
         console.log(response);
-        this.getFlights();
         editForm.reset();
+        this.filteredFlights = [];
+        this.getFlights()
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
