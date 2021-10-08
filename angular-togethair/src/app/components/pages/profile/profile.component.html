@@ -99,7 +99,7 @@
               </div>
               <div class="modal-body">
 
-                <table class="table" *ngFor="let booking of bookings">
+                <table class="table">
                   <thead class="table-dark">
                   <tr>
                     <th scope="col">ID</th>
@@ -112,7 +112,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
+                  <tr *ngFor="let booking of bookings">
                     <th scope="row">{{booking.id}}</th>
                     <td>{{booking.bookingDate | date:'medium'}}</td>
                     <td>{{booking.totalPrice | number: '1.2-2'}}</td>
